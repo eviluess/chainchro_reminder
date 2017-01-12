@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="utilPopStrOK">確定</string>
+    <string name="utilPopStrCancel">取消</string>
+    <string name="utilPopStrQuit">退出</string>
+    <string name="selfUpdaterTicket">發現新版本！</string>
+    <string name="selfUpdaterDesc">現在就去下載！</string>
+    <string name="afterTasteChooseEmailClient">請選擇郵件客戶端</string>
+    <string name="afterTasteDonate">捐助</string>
+    <string name="afterTasteFeedback">聯系作者</string>
+    <string name="afterTasteShare">推薦給好友</string>
+    <string name="afterTasteShareSubject">已向您建議使用 %1$s 應用程式</string>
+    <string name="afterTasteSuggestion">建議</string>
+    <string name="afterTasteBugReport">報告錯誤</string>
+    <string name="afterTasteSayHello">打個招呼</string>
+    <string name="afterTasteVisitHomepage">訪問主頁</string>
+    <string name="afterTasteSubjectSayHello">妳好，關于%1$s……</string>
+    <string name="afterTasteSubjectSuggestion">妳好，我想給%1$s提個建議……</string>
+    <string name="afterTasteSubjectBugReport">妳好，在使用%1$s的時候發生錯誤……</string>
+    <string name="afterTasteShareContent">我目前正在使用 %1$s，而且我想你應該也會喜歡。在 Android手機上試用這個應用程式吧：%2$s</string>
+    <string name="afterTastePleaseClickAD">覺得該應用不錯的話請點擊一下廣告吧</string>
+    <string name="afterTastePleaseDonate">覺得該應用不錯的話可以考慮捐贈作者哦</string>
+    <string name="afterTaste">用後感</string>
+    <string name="checkUpdate">檢查更新</string>
+    <string name="selfUpdaterUpdateNow">立刻更新</string>
+    <string name="selfUpdaterUpdatePeriod">更新間隔</string>
+    <string name="selfUpdaterUpdateConditions">更新的網路條件</string>
+    <string name="selfUpdaterUpdateNotFound">已經是最新版</string>
+    <string name="selfUpdaterNeverUpdate">手動</string>
+    <string name="selfUpdaterCheckEveryTime">程序啓動時</string>
+    <string name="selfUpdaterCheckEvery3Days">每3天</string>
+    <string name="selfUpdaterCheckEveryWeek">每周</string>
+    <string name="utilPopStr4GAbove">4G、LTE或更好的移動網路</string>
+    <string name="utilPopStrPassNextTime">不再顯示</string>
+    <string name="utilPopStrClose">關閉</string>
+    <string name="utilPopStrRunOnBoot">系統啓動後自動運行</string>
+    <string name="utilPopStrTips">小貼士</string>
+    <string name="selfUpdaterCheckDaily">每天</string>
+    <string name="utilCannotGetRooted">無法獲取Root權限或被用戶拒絕！</string>
+    <string name="utilBusyBoxNotFound">沒安裝BusyBox！</string>
+    <string name="utilBusyBoxIntro">把應用程序移動到系統區需要安裝BusyBox。
+        \n請在下載安裝後，再次嘗試。</string>
+    <string name="utilPopStrError">錯誤</string>
+    <string name="utilPopStrReboot">重啓動</string>
+    <string name="utilPopStrYes">是</string>
+    <string name="utilPopStrNo">否</string>
+    <string name="utilPopStrRebootReason">只有重啓後方能生效。
+        \n要立刻重啓動嗎？</string>
+    <string name="utilPopStrRequireRoot">需要Root權限</string>
+    <string name="utilPopStrRequireRootDetail">要使該功能生效需要Root權限。
+        \n要申請Root權限嗎？</string>
+    <string name="utilPopStrMultiInstallationFound">發現重複安裝相同版本</string>
+    <string name="utilPopStrMultiInstallationFoundExplain">在系統和用戶區安裝相同的版本會導致各種異常。
+        \n\n用戶區的版本將會被刪除。
+        \n程序退出後請手動重啓本程序。</string>
+    <string name="utilPopStrDownloadFromBrowser">用浏覽器</string>
+    <string name="utilPopStrDownloadFromMarket">用市場</string>
+    <string name="packAppUpdateToSys">更新到系統內存</string>
+    <string name="packAppUpdateToSysExplain">更新的程序需要移動到系統區以保證正常運行。
+        \n\n移動過程會使得程序自動退出。
+        \n\n之後請手動重啓該程序。</string>
+        
+    <string name="packAppConflictInstallationFound">發現沖突的程序！</string>
+    <string name="packAppConflictInstallationExplain">當應用程序的包名或者簽名發生了變更，
+        \n需要卸載之前的版本以保障新版能正常使用。
+        \n\n現在立刻卸載舊版嗎？</string>
+    <string name="afterTasteMakeFriend">加作者為好友</string>
+    <string name="afterTasteTwitter">Twitter</string>
+    <string name="afterTasteWeChat">微信</string>
+    <string name="afterTasteQQ">QQ</string>
+    <string name="afterTasteFacebook">Facebook</string>
+    <string name="afterTasteLine">LINE</string>
+    <string name="afterTasteContactCopied">作者聯系方式%1$s已經復制到剪貼板</string>
+
+</resources>

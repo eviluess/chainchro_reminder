@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">锁链编年史提醒器</string>
+    <string name="apFullAt">体力爆满时刻</string>
+    <string name="apFullSoon">体力即将爆满</string>
+    <string name="dayBreak">天亮剩余</string>
+    <string name="dayBreakAt">天亮时刻</string>
+    <string name="dayBreakSoon">即将天亮</string>
+    <string name="explDoneSoon">探索即将结束</string>
+    <string name="exploringDoneAt">探索结束时刻</string>
+    <string name="exploringRemain">探索剩余</string>
+    <string name="halfSoulFullAt">灵魂半满时刻</string>
+    <string name="halfSoulFullSoon">灵魂即将半满</string>
+    <string name="minutesToNextAP">1单位体力恢复剩余时间</string>
+    <string name="notSet">未设置</string>
+    <string name="setReminders">设置提醒</string>
+    <string name="soul">灵魂数</string>
+    <string name="soulFullAt">灵魂爆满时刻</string>
+    <string name="soulFullSoon">灵魂即将爆满</string>
+    <string name="soulRemain">灵魂剩余</string>
+    <string name="ap">体力</string>
+</resources>
