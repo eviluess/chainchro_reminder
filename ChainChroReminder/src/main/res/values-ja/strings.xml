@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">チェンクロ・リマインダー</string>
+    <string name="ap">AP</string>
+    <string name="apFullAt">APの満点時刻</string>
+    <string name="apFullSoon">APは間もなく満点ですよ</string>
+    <string name="dayBreak">ブレーブの数</string>
+    <string name="dayBreakAt">ブレーブの到着時刻</string>
+    <string name="dayBreakSoon">ブレーブは間もなく満点ですよ</string>
+    <string name="explDoneSoon">探査は間もなく完了しますよ</string>
+    <string name="exploringDoneAt">探査完了時刻</string>
+    <string name="exploringRemain">探査の残り時間</string>
+    <string name="halfSoulFullAt">三つのソウル到着時刻</string>
+    <string name="halfSoulFullSoon">ソウルは間もなく三つに過ぎますよ</string>
+    <string name="minutesToNextAP">次のAP到着時間（分）</string>
+    <string name="notSet">指定しない</string>
+    <string name="setReminders">リマインダーをセット</string>
+    <string name="soul">ソウル</string>
+    <string name="soulFullAt">六つのソウル到着時刻</string>
+    <string name="soulFullSoon">ソウルは間もなく六つに過ぎますよ</string>
+    <string name="soulRemain">ソウルの残り数</string>
+</resources>
