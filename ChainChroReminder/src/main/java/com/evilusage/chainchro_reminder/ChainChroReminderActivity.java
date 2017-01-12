@@ -41,11 +41,14 @@ public class ChainChroReminderActivity extends ActionBarActivity {
 
 	private SelfUpdater updater;
 
-	private static final String downloadUrl = "https://dl.dropboxusercontent.com/u/1890357/software/mm/fe-%s.apk";
+	private static final String downloadUrl =
+			"https://raw.githubusercontent.com/eviluess/chainchro_reminder/master/release/ChainChroReminder-%s.apk";
 
-	private static final String updateUrl = "https://dl.dropboxusercontent.com/u/1890357/software/mm/updateinfo.json";
+	private static final String updateUrl =
+			"https://raw.githubusercontent.com/eviluess/chainchro_reminder/master/release/updateinfo.json";
 
-	private static final String homepageUrl = "https://dl.dropboxusercontent.com/u/1890357/software/mm/intro%s.html";
+	private static final String homepageUrl =
+			"https://github.com/eviluess/chainchro_reminder/wiki/Chain-Chronicle-Reminder";
 
 	private static final String donateUrl = "https://www.paypal.me/Eviluess/1usd";
 
