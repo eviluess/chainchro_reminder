@@ -98,8 +98,8 @@ public class ChainChroReminderActivity extends ActionBarActivity {
 		long now = Calendar.getInstance().getTime().getTime() / 1000;
 
 		if (preferences.apFullTime == 0) {
-			putTextToViewById(R.id.etAP, R.string.notSet);
-			putTextToViewById(R.id.etMinutesToNextAP, R.string.notSet);
+			putTextToViewById(R.id.etAP, "0~4");
+			putTextToViewById(R.id.etMinutesToNextAP, "0~7");
 		} else {
 			int apRemain = (int) (preferences.apFullTime - now) / 60;
 			int ap = preferences.apTotal - (apRemain + 7) / 8;
@@ -120,11 +120,19 @@ public class ChainChroReminderActivity extends ActionBarActivity {
 
 		putTimeToViewById(R.id.tvDayBreakTime, preferences.dayBreakTime);
 
-		int soulDuration = (int) (6 * 30 * 60 - (preferences.soulFullTime - now)) / 60;
+		if (preferences.soulFullTime == 0) {
+			putTextToViewById(R.id.etSoul, "0~5");
+			putTextToViewById(R.id.etSoulRemain, "0~29");
+		}
+		else
+		{
+			int soulDuration = (int) (6 * 30 * 60 - (preferences.soulFullTime - now)) / 60;
 
-		putIntToViewById(R.id.etSoul, soulDuration / 30);
-		putIntToViewById(R.id.etSoulRemain,
-				30 - (soulDuration - soulDuration / 30 * 30));
+			putIntToViewById(R.id.etSoul, soulDuration / 30);
+			putIntToViewById(R.id.etSoulRemain,
+					30 - (soulDuration - soulDuration / 30 * 30));
+		}
+
 
 		putTimeToViewById(R.id.tvSoulFullTime, preferences.soulFullTime);
 
@@ -142,6 +150,13 @@ public class ChainChroReminderActivity extends ActionBarActivity {
 
 	private void putTextToViewById(int id, int text) {
 		Andrutils.putTextToViewById(this, id, text);
+	}
+
+	private void putTextToViewById(int id, final String text) {
+
+		TextView tv = (TextView) findViewById(id);
+
+		tv.setText(text);
 	}
 
 	@SuppressWarnings("deprecation")
@@ -324,6 +339,7 @@ public class ChainChroReminderActivity extends ActionBarActivity {
 		} catch (Exception e) {
 		}
 	}
+
 
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
