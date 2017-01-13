@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">锁链编年史提醒器</string>
+    <string name="app_name">锁链战记提醒器</string>
     <string name="apFullAt">体力爆满时刻</string>
     <string name="apFullSoon">体力即将爆满</string>
     <string name="dayBreak">天亮剩余</string>

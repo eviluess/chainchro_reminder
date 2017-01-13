@@ -49,17 +49,35 @@ public class ChainChroReminderReceiver extends BroadcastReceiver {
 			mBuilder.setVibrate(new long[] { 0, 800, 200, 300, 100, 300 });
 			mBuilder.setLights(0x00FFFF00, 800, 400);
 
-			final PendingIntent pendingIntent = PendingIntent.getActivity(
-					context,
-					0,
-					context.getPackageManager().getLaunchIntentForPackage(
-							"com.sega.chainchronicle"), 0);
+			final String[] ccPackageNames =
+					{
+						"com.sega.chainchronicle",
+						"com.meiyu.chainchronicle.cn",
+						"net.gamon.chainchronicleTW"
+					};
 
-			mBuilder.setContentIntent(pendingIntent);
+			for (String pkgName :  ccPackageNames)
+			{
+				Intent launchIntent = context.getPackageManager().getLaunchIntentForPackage(
+						pkgName);
+
+				if (launchIntent != null)
+				{
+					final PendingIntent pendingIntent = PendingIntent.getActivity(
+							context, 0, launchIntent, 0);
+
+					mBuilder.setContentIntent(pendingIntent);
+
+					break;
+				}
+			}
 
 			final NotificationManager notiman = (NotificationManager) context
 					.getSystemService(Context.NOTIFICATION_SERVICE);
+
 			notiman.notify(0, mBuilder.build());
+
+
 		} catch (Exception e) {
 			Log.e(TAG, "Cannot Create Noti.");
 			e.printStackTrace();
