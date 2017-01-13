@@ -8,7 +8,7 @@
     <string name="selfUpdaterDesc">现在就去下载！</string>
     <string name="afterTasteChooseEmailClient">请选择邮件客户端</string>
     <string name="afterTasteDonate">捐助</string>
-    <string name="afterTasteFeedback">联系作者</string>
+    <string name="afterTasteFeedback">联系开发者</string>
     <string name="afterTasteShare">推荐给好友</string>
     <string name="afterTasteShareSubject">推荐个软件 %1$s给你</string>
     <string name="afterTasteSuggestion">建议</string>
@@ -21,7 +21,7 @@
     <string name="afterTasteShareContent">我一直在使用 %1$s，我认为你也会喜爱它。下载来试试吧：%2$s</string>
     <string name="afterTastePleaseClickAD">觉得该应用不错的话请点击一下广告吧</string>
     <string name="afterTastePleaseDonate">觉得该应用不错的话可以考虑捐助作者哦</string>
-    <string name="afterTaste">用后感</string>
+    <string name="afterTaste">帮助与反馈</string>
     <string name="checkUpdate">检查更新</string>
     <string name="selfUpdaterUpdateNow">立刻更新</string>
     <string name="selfUpdaterUpdatePeriod">更新间隔</string>
@@ -64,12 +64,12 @@
     <string name="packAppConflictInstallationExplain">当应用程序的包名或者签名发生了变更，
         \n需要卸载之前的版本以保障新版能正常使用。
         \n\n现在立刻卸载旧版吗？</string>
-    <string name="afterTasteMakeFriend">添加作者为好友</string>
-    <string name="afterTasteTwitter">推特</string>
+    <string name="afterTasteMakeFriend">添加开发者为好友</string>
+    <string name="afterTasteTwitter">Twitter</string>
     <string name="afterTasteWeChat">微信</string>
     <string name="afterTasteQQ">QQ</string>
-    <string name="afterTasteFacebook">脸谱(Facebook)</string>
-    <string name="afterTasteLine">连我(LINE)</string>
-    <string name="afterTasteContactCopied">作者联系方式%1$s已经复制到剪贴板</string>
+    <string name="afterTasteFacebook">Facebook</string>
+    <string name="afterTasteLine">LINE</string>
+    <string name="afterTasteContactCopied">开发者联系方式%1$s已经复制到剪贴板</string>
 
 </resources>

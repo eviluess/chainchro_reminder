@@ -17,6 +17,6 @@
     <string name="soul">靈魂數</string>
     <string name="soulFullAt">靈魂爆滿時刻</string>
     <string name="soulFullSoon">靈魂即將爆滿嘞</string>
-    <string name="soulRemain">靈魂剩余</string>
+    <string name="soulRemain">靈魂剩余時間</string>
     <string name="ap">體力</string>
 </resources>

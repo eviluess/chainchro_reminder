@@ -192,10 +192,17 @@ public class AfterTaste {
 
 									selected = items[whichButton];
 
-									Intent intent = context.getPackageManager().getLaunchIntentForPackage(
-											selected);
+									try
+									{
+										Intent intent = context.getPackageManager().getLaunchIntentForPackage(
+												selected);
 
-									context.startActivity(intent);
+										context.startActivity(intent);
+									}
+									catch (Exception e)
+									{
+										// The app is not installed, do nothing
+									}
 								}
 
 							}

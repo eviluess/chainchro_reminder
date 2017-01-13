@@ -10,7 +10,7 @@
     <string name="dayBreak">Day Break Remained</string>
     <string name="dayBreakAt">Day Break At</string>
     <string name="soul">Count of Soul</string>
-    <string name="soulRemain">Soul Remain</string>
+    <string name="soulRemain">Soul Remain Minutes</string>
     <string name="halfSoulFullAt">Soul Halves At</string>
     <string name="soulFullAt">Soul Full At</string>
     <string name="exploringRemain">Exploring Remained</string>

@@ -8,7 +8,7 @@
     <string name="selfUpdaterDesc">現在就去下載！</string>
     <string name="afterTasteChooseEmailClient">請選擇郵件客戶端</string>
     <string name="afterTasteDonate">捐助</string>
-    <string name="afterTasteFeedback">聯系作者</string>
+    <string name="afterTasteFeedback">聯系開發者</string>
     <string name="afterTasteShare">推薦給好友</string>
     <string name="afterTasteShareSubject">已向您建議使用 %1$s 應用程式</string>
     <string name="afterTasteSuggestion">建議</string>
@@ -21,7 +21,7 @@
     <string name="afterTasteShareContent">我目前正在使用 %1$s，而且我想你應該也會喜歡。在 Android手機上試用這個應用程式吧：%2$s</string>
     <string name="afterTastePleaseClickAD">覺得該應用不錯的話請點擊一下廣告吧</string>
     <string name="afterTastePleaseDonate">覺得該應用不錯的話可以考慮捐贈作者哦</string>
-    <string name="afterTaste">用後感</string>
+    <string name="afterTaste">幫助與反饋</string>
     <string name="checkUpdate">檢查更新</string>
     <string name="selfUpdaterUpdateNow">立刻更新</string>
     <string name="selfUpdaterUpdatePeriod">更新間隔</string>
@@ -65,12 +65,12 @@
     <string name="packAppConflictInstallationExplain">當應用程序的包名或者簽名發生了變更，
         \n需要卸載之前的版本以保障新版能正常使用。
         \n\n現在立刻卸載舊版嗎？</string>
-    <string name="afterTasteMakeFriend">加作者為好友</string>
+    <string name="afterTasteMakeFriend">加開發者為好友</string>
     <string name="afterTasteTwitter">Twitter</string>
     <string name="afterTasteWeChat">微信</string>
     <string name="afterTasteQQ">QQ</string>
     <string name="afterTasteFacebook">Facebook</string>
     <string name="afterTasteLine">LINE</string>
-    <string name="afterTasteContactCopied">作者聯系方式%1$s已經復制到剪貼板</string>
+    <string name="afterTasteContactCopied">開發者作者聯系方式%1$s已經復制到剪貼板</string>
 
 </resources>

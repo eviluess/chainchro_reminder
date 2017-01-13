@@ -8,7 +8,7 @@
     <string name="selfUpdaterDesc">今すぐダウンロード</string>
     <string name="afterTasteChooseEmailClient">メールアプリを選択してください</string>
     <string name="afterTasteDonate">寄付し</string>
-    <string name="afterTasteFeedback">作者に連絡</string>
+    <string name="afterTasteFeedback">開発者に連絡</string>
     <string name="afterTasteShare">友に薦め</string>
     <string name="afterTasteShareSubject">Android アプリケーション、%1$s をお勧めします</string>
     <string name="afterTasteSuggestion">ご提案</string>
@@ -22,7 +22,7 @@
 		%2$s</string>
     <string name="afterTastePleaseClickAD">このアプリが好きなら広告をクリックしてください</string>
     <string name="afterTastePleaseDonate">このアプリが好きなら寄付してください</string>
-    <string name="afterTaste">試した後</string>
+    <string name="afterTaste">フィードバックなど</string>
     <string name="checkUpdate">更新を確認</string>
     <string name="selfUpdaterUpdateNow">今すぐ更新</string>
     <string name="selfUpdaterUpdatePeriod">更新の間隔</string>
@@ -65,12 +65,12 @@
     <string name="packAppConflictInstallationExplain">アプリのパッケジー、或いは署名が変更された場合、
         \n前のバージョンはアンインストールされなければ新たなバージョンがうまく使えないことになります。
         \n\n今すぐ前のバージョンのアンインストールを行いますか？</string>
-    <string name="afterTasteMakeFriend">作者と友になりたい</string>
-    <string name="afterTasteTwitter">ツイーター</string>
-    <string name="afterTasteWeChat">微信（ウィーチャット）</string>
+    <string name="afterTasteMakeFriend">開発者と友になりたい</string>
+    <string name="afterTasteTwitter">Twitter</string>
+    <string name="afterTasteWeChat">WeChat</string>
     <string name="afterTasteQQ">テンセントQQ</string>
     <string name="afterTasteFacebook">Facebook</string>
     <string name="afterTasteLine">LINE</string>
-    <string name="afterTasteContactCopied">%1$sをすでにクリップボードにコピーしました</string>
+    <string name="afterTasteContactCopied">開発者の情報%1$sをすでにクリップボードにコピーしました</string>
 
 </resources>
