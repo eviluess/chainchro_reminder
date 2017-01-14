@@ -13,6 +13,7 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Calendar;
 
 import org.apache.http.util.EncodingUtils;
 
@@ -24,6 +25,7 @@ import android.graphics.PixelFormat;
 import android.os.Build;
 import android.os.Environment;
 import android.os.StrictMode;
+import android.os.SystemClock;
 import android.util.DisplayMetrics;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -36,6 +38,8 @@ import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.CompoundButton.OnCheckedChangeListener;
 import android.widget.TextView;
+
+import static java.lang.Thread.State.RUNNABLE;
 
 class PermissionHelper {
 	@TargetApi(Build.VERSION_CODES.GINGERBREAD)
@@ -276,27 +280,68 @@ public class Andrutils {
 
 	}
 
-	public static ArrayList<String> getHtmlLines(final String urlString) {
+	public static ArrayList<String> getHtmlLines(final String urlString, int timeout) {
 
 		permitAccess();
 
 		if (urlString == null)
 			return null;
 
-		ArrayList<String> ret = new ArrayList<String>();
-		try {
-			BufferedReader br = new BufferedReader(new InputStreamReader(
-					((HttpURLConnection) (new URL(urlString)).openConnection())
-							.getInputStream()));
-			String line;
-			while ((line = br.readLine()) != null) {
-				ret.add(line);
+		final ArrayList<String> ret = new ArrayList<String>();
+
+		Thread t = new Thread(){
+			public void run(){
+				try {
+					BufferedReader br = new BufferedReader(new InputStreamReader(
+							((HttpURLConnection) (new URL(urlString)).openConnection())
+									.getInputStream()));
+					String line;
+					while ((line = br.readLine()) != null) {
+						ret.add(line);
+					}
+				} catch (Exception e) {
+					e.printStackTrace();
+					ret.clear();
+				}
+
 			}
-			return ret;
-		} catch (Exception e) {
-			e.printStackTrace();
-			return null;
+		};
+
+		t.start();
+
+		long startTime = Calendar.getInstance().getTime().getTime();
+
+		long now = startTime;
+
+		while (timeout > 0 ? now - startTime < timeout : true)
+		{
+			SystemClock.sleep(300);
+
+			now += 300;
+
+			Thread.State state = t.getState();
+
+			if (RUNNABLE != state)
+			{
+				timeout = 0;
+				break;
+			}
+
 		}
+
+		if (timeout > 0 )
+		{
+			t.interrupt();
+
+			ret.clear();
+		}
+
+
+		if (ret.size() == 0)
+			return null;
+
+		return ret;
+
 	}
 
 	public static String getHtml(String urlString) {

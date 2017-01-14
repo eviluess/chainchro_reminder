@@ -415,7 +415,7 @@ public class LocalizedPath {
 	}
 
 	public static ArrayList<String> getCacheListFromUrl(final String url) {
-		return Andrutils.getHtmlLines(url);
+		return Andrutils.getHtmlLines(url, 3000);
 	}
 
 	public static ArrayList<String> getCacheListFromArray(final String[] array) {

@@ -262,6 +262,8 @@ public class ChainChroReminderActivity extends ActionBarActivity {
 								cacheList,
 								null)
 								.createLocalizedUrl());
+
+						isHomepageAssigned = true;
 					}
 					else
 					{
@@ -269,12 +271,10 @@ public class ChainChroReminderActivity extends ActionBarActivity {
 								new LocalizedPath(homepageUrl, null, cacheList,null)
 								.createLocalizedUrl());
 					}
-
-
-					isHomepageAssigned = true;
 				}
 
 				afterTaste.showRecommendedChoices();
+
 				break;
 			}
 			case R.id.btnCheckUpdate: {
