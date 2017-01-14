@@ -193,13 +193,15 @@ public class LocalizedPath {
 	 * $V: Variant
 	 * 
 	 * U/L/I/N: --> $C
+	 *
+	 * $[ XXX $]: When the checker failed, remove these text to match again (match language only)
 	 */
 
-	public static final String GOOGLECODE_WIKI = "?wl=$L2-$C4I"; // ?wl=zh-Hans
-	public static final String ANDROID_VALUE = "$L2-r$C2I"; // zh-rTW
-	public static final String ANDROID_WIKI_VALUE = "?wl=$L2-r$C2I"; // ?wl=-zh-rTW
-	public static final String LOCALE_STRING = "$L2_$C2I_$VI"; // en__POSIX
-	public static final String LOWERCASE_FILENAME = "$L2_$C2L"; // zh_tw
+	public static final String GOOGLECODE_WIKI = "?wl=$L2$[-$C4I$]"; // ?wl=zh-Hans
+	public static final String ANDROID_VALUE = "$L2$[-r$C2I$]"; // zh-rTW
+	public static final String ANDROID_WIKI_VALUE = "?wl=$L2$[-r$C2I$]"; // ?wl=-zh-rTW
+	public static final String LOCALE_STRING = "$L2_$C2I$[_$VI$]"; // en__POSIX
+	public static final String LOWERCASE_FILENAME = "$L2$[_$C2L$]"; // zh_tw
 
 	private String path;
 	private String localePattern;
@@ -207,20 +209,64 @@ public class LocalizedPath {
 	private PathChecker checker;
 
 	public String getLocalizedPath() {
-
 		if (localePattern == null)
 			return path;
 
-		final Locale lc = Locale.getDefault();
-
 		char[] pattern = localePattern.toCharArray();
 
+		String ret = getLocalizedPathByPattern(pattern, true);
+
+		if (ret == null)
+		{
+			return getLocalizedPathByPattern(pattern, false);
+		}
+
+		return ret;
+	}
+
+	private String getLocalizedPathByPattern(final char[] patternOriginal, boolean full) {
+
+		boolean ignoreBegin = false;
+
+		String patternComposer = "";
+
+		int i = 0;
+
+		while (i < patternOriginal.length ) {
+			char c = patternOriginal[i];
+
+			if (c == '$') {
+				if (patternOriginal[i + 1] == '[') {
+					ignoreBegin = true;
+					i += 2;
+					continue;
+				}
+
+				if (patternOriginal[i + 1] == ']') {
+					ignoreBegin = false;
+					i += 2;
+					continue;
+				}
+
+			}
+
+			if (full || !ignoreBegin)
+			{
+				patternComposer += c;
+			}
+
+			i++;
+		}
+
+		final char[] pattern = patternComposer.toCharArray();
+
+		final Locale lc = Locale.getDefault();
 		int pIndex = 0;
 
 		String[] prefixes = { "", "", "" };
 		LocalFunction[] functions = new LocalFunction[3];
 
-		int i = 0;
+		i = 0;
 
 		while (i < pattern.length && pIndex < 3) {
 			char c = pattern[i];
@@ -308,15 +354,32 @@ public class LocalizedPath {
 				}
 
 			}
+			else
+			{
+				ret = String.format(path, ret);
 
-			ret = String.format(path, ret);
-
-			if (checker.check(ret)) {
-				return ret;
+				if (checker.check(ret)) {
+					return ret;
+				}
 			}
 		}
-		
+
+		if (full)
+		{
+			return null; // give lose mode a chance to match
+		}
+
 		String ret = String.format(path, "default");
+
+		if (cacheList != null && cacheList.size() > 0) {
+			String first = cacheList.get(0);
+			boolean mapping = first.equals("default");
+
+			if (mapping)
+			{
+				ret = String.format(path, cacheList.get(1));
+			}
+		}
 
 		if (checker.check(ret)) {
 			return ret;
