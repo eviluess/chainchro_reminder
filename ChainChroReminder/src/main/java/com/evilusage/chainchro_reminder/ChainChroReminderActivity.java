@@ -50,8 +50,6 @@ public class ChainChroReminderActivity extends ActionBarActivity {
 	private static final String homepageUrl =
 			"https://github.com/eviluess/chainchro_reminder/wiki/Chain-Chronicle-Reminder";
 
-	private static final String donateUrl = "https://www.paypal.me/Eviluess/1usd";
-
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -66,8 +64,6 @@ public class ChainChroReminderActivity extends ActionBarActivity {
 
 		afterTaste.setDefaultDownloadUrl(String.format(downloadUrl,
 				PackApp.getAppVersionName(this)));
-
-		afterTaste.setDefaultDonateUrl(new LocalizedPath(donateUrl).createLocalizedUrl());
 
 		afterTaste.setDefaultHomepage(new LocalizedPath(homepageUrl,
 				LocalizedPath.LOWERCASE_FILENAME, null, null)
@@ -139,10 +135,18 @@ public class ChainChroReminderActivity extends ActionBarActivity {
 		putTimeToViewById(R.id.tvHalfSoulFullTime,
 				preferences.soulFullTime - 30 * 60 * 3);
 
-		int explMinites = (int) (preferences.exploringDoneTime - now) / 60;
 
-		putIntToViewById(R.id.etERHours, explMinites / 60 );
-		putIntToViewById(R.id.etERMinutes, explMinites - (explMinites / 60) *60);
+		if (preferences.exploringDoneTime == 0) {
+			putTextToViewById(R.id.etERHours, "0~7");
+			putTextToViewById(R.id.etERMinutes, "0~59");
+		}
+		else
+		{
+			int explMinites = (int) (preferences.exploringDoneTime - now) / 60;
+
+			putIntToViewById(R.id.etERHours, explMinites / 60 );
+			putIntToViewById(R.id.etERMinutes, explMinites - (explMinites / 60) *60);
+		}
 
 		putTimeToViewById(R.id.tvExploringDoneTime, preferences.exploringDoneTime);
 

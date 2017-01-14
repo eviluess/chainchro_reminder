@@ -19,4 +19,5 @@
     <string name="soulFullSoon">靈魂即將爆滿嘞</string>
     <string name="soulRemain">靈魂剩余時間</string>
     <string name="ap">體力</string>
+    <string name="maxAP">上限</string>
 </resources>

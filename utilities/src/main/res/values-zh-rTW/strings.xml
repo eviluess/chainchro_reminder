@@ -8,7 +8,7 @@
     <string name="selfUpdaterDesc">現在就去下載！</string>
     <string name="afterTasteChooseEmailClient">請選擇郵件客戶端</string>
     <string name="afterTasteDonate">捐助</string>
-    <string name="afterTasteFeedback">聯系開發者</string>
+    <string name="afterTasteFeedback">發送電子郵件給開發者</string>
     <string name="afterTasteShare">推薦給好友</string>
     <string name="afterTasteShareSubject">已向您建議使用 %1$s 應用程式</string>
     <string name="afterTasteSuggestion">建議</string>
@@ -72,5 +72,6 @@
     <string name="afterTasteFacebook">Facebook</string>
     <string name="afterTasteLine">LINE</string>
     <string name="afterTasteContactCopied">開發者作者聯系方式%1$s已經復制到剪貼板</string>
+    <string name="afterTasteDonateUrl">https://www.paypal.me/Eviluess/1usd</string>
 
 </resources>

@@ -8,7 +8,7 @@
     <string name="selfUpdaterDesc">今すぐダウンロード</string>
     <string name="afterTasteChooseEmailClient">メールアプリを選択してください</string>
     <string name="afterTasteDonate">寄付し</string>
-    <string name="afterTasteFeedback">開発者に連絡</string>
+    <string name="afterTasteFeedback">開発者に電子メールを送る</string>
     <string name="afterTasteShare">友に薦め</string>
     <string name="afterTasteShareSubject">Android アプリケーション、%1$s をお勧めします</string>
     <string name="afterTasteSuggestion">ご提案</string>
@@ -72,5 +72,6 @@
     <string name="afterTasteFacebook">Facebook</string>
     <string name="afterTasteLine">LINE</string>
     <string name="afterTasteContactCopied">開発者の情報%1$sをすでにクリップボードにコピーしました</string>
+    <string name="afterTasteDonateUrl">https://www.paypal.me/Eviluess/1usd</string>
 
 </resources>

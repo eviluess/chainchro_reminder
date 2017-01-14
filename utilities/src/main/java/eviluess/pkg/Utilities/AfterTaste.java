@@ -58,9 +58,12 @@ public class AfterTaste {
 							makeFriend(null);
 							break;
 						case 2:
-							feedback(null, null);
+							visitHomepage(null);
 							break;
 						case 3:
+							feedback(null, null);
+							break;
+						case 4:
 							share(null);
 							break;
 						}
@@ -234,6 +237,13 @@ public class AfterTaste {
 				context.getString(R.string.afterTasteShare)));
 	}
 
+	public void visitHomepage(LocalizedPath localizedUrl) {
+		if (localizedUrl == null)
+			donate(defaultHomepage);
+		else
+			donate(localizedUrl);
+	}
+
 	public void donate(LocalizedPath localizedUrl) {
 
 		String url = localizedUrl == null ? null : localizedUrl
@@ -244,9 +254,8 @@ public class AfterTaste {
 
 				defaultDonateUrl = new LocalizedPath(
 						context.getString(R.string.afterTasteDonateUrl),
-						LocalizedPath.LOWERCASE_FILENAME,
-						LocalizedPath.getCacheListFromUrl(context
-								.getString(R.string.afterTasteDonateUrlLanInfo)),
+						null,//LocalizedPath.LOWERCASE_FILENAME,
+						null,//LocalizedPath.getCacheListFromUrl(context.getString(R.string.afterTasteDonateUrlLanInfo)),
 						null).createLocalizedUrl();
 			}
 

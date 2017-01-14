@@ -19,4 +19,5 @@
     <string name="soulFullAt">ソウルの全回復時刻</string>
     <string name="soulFullSoon">ソウルは間もなく全回復しますよ</string>
     <string name="soulRemain">ソウルの残り数時間</string>
+    <string name="maxAP">限界</string>
 </resources>

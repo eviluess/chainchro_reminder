@@ -10,7 +10,7 @@
     <string name="afterTasteEMailAddress" translatable="false">eviluess@qq.com</string>
     <string name="afterTasteChooseEmailClient">Choose an E-Mail Client</string>
     <string name="afterTasteDonate">Donate</string>
-    <string name="afterTasteFeedback">Contact the Developer</string>
+    <string name="afterTasteFeedback">E-mail the Developer</string>
     <string name="afterTasteMakeFriend">Make Friend with the Author</string>
     <string name="afterTasteShare">Share with Friends</string>
     <string name="afterTastePleaseClickAD">Please click on the AD if you feel happy</string>
@@ -26,7 +26,7 @@
     <string name="afterTasteSubjectBugReport">Hi, some problems occurred during I was using %1$s ....</string>
     <string name="afterTasteShareContent">The app, %1$s, is very cool and I think you might
 		like it. Check it out here: %2$s</string>
-    <string name="afterTasteDonateUrl" translatable="false">https://dl.dropboxusercontent.com/u/1890357/donate/%s.htm</string>
+    <string name="afterTasteDonateUrl">https://www.paypal.me/Eviluess/1usd</string>
     <string name="afterTasteDonateUrlLanInfo" translatable="false">https://dl.dropboxusercontent.com/u/1890357/donate/lan.txt</string>
     <string name="afterTaste">Help and Feedback</string>
 
