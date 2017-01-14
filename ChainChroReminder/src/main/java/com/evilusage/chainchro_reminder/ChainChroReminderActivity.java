@@ -1,5 +1,6 @@
 package com.evilusage.chainchro_reminder;
 
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 
@@ -48,10 +49,14 @@ public class ChainChroReminderActivity extends ActionBarActivity {
 			"https://raw.githubusercontent.com/eviluess/chainchro_reminder/master/release/updateinfo.json";
 
 	private static final String homepageUrl =
-			"https://github.com/eviluess/chainchro_reminder/wiki/%s";
+			"https://github.com/eviluess/chainchro_reminder/wiki";
+
+	private static final String homepageUrlFormatted = homepageUrl + "/%s";
 
 	private static final String homepageCacheUrl =
 			"https://raw.githubusercontent.com/eviluess/chainchro_reminder/master/release/wiki.lan";
+
+	private boolean isHomepageAssigned = false;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -68,11 +73,7 @@ public class ChainChroReminderActivity extends ActionBarActivity {
 		afterTaste.setDefaultDownloadUrl(String.format(downloadUrl,
 				PackApp.getAppVersionName(this)));
 
-		afterTaste.setDefaultHomepage(new LocalizedPath(homepageUrl,
-				LocalizedPath.LOWERCASE_FILENAME,
-				LocalizedPath.getCacheListFromUrl(homepageCacheUrl),
-				null)
-				.createLocalizedUrl());
+		isHomepageAssigned = false;
 
 		updater = new SelfUpdater(this);
 		updater.setUrl(updateUrl);
@@ -249,6 +250,30 @@ public class ChainChroReminderActivity extends ActionBarActivity {
 				break;
 			}
 			case R.id.btnAfterTaste: {
+
+				if (!isHomepageAssigned)
+				{
+					ArrayList<String> cacheList = LocalizedPath.getCacheListFromUrl(homepageCacheUrl);
+
+					if (cacheList != null)
+					{
+						afterTaste.setDefaultHomepage(new LocalizedPath(homepageUrlFormatted,
+								LocalizedPath.LOWERCASE_FILENAME,
+								cacheList,
+								null)
+								.createLocalizedUrl());
+					}
+					else
+					{
+						afterTaste.setDefaultHomepage(
+								new LocalizedPath(homepageUrl, null, cacheList,null)
+								.createLocalizedUrl());
+					}
+
+
+					isHomepageAssigned = true;
+				}
+
 				afterTaste.showRecommendedChoices();
 				break;
 			}

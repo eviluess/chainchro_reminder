@@ -214,14 +214,7 @@ public class LocalizedPath {
 
 		char[] pattern = localePattern.toCharArray();
 
-		String ret = getLocalizedPathByPattern(pattern, true);
-
-		if (ret == null)
-		{
-			return getLocalizedPathByPattern(pattern, false);
-		}
-
-		return ret;
+		return getLocalizedPathByPattern(pattern, true);
 	}
 
 	private String getLocalizedPathByPattern(final char[] patternOriginal, boolean full) {
@@ -323,12 +316,7 @@ public class LocalizedPath {
 					for (i=0;i<total;i++) // i is safe to be re-used here
 					{
 						if (ret.equals(cacheList.get(i*2))) {
-							String text = String.format(path, cacheList.get(i*2+1));
-
-							if (checker.check(text))
-							{
-								return text;
-							}
+							return String.format(path, cacheList.get(i*2+1));
 						}
 
 					}
@@ -341,12 +329,7 @@ public class LocalizedPath {
 					while (it.hasNext()) {
 						if (ret.equals(it.next())) {
 							{
-								String text = String.format(path, ret);
-
-								if (checker.check(text))
-								{
-									return text;
-								}
+								return String.format(path, ret);
 							}
 						}
 					}
@@ -362,11 +345,6 @@ public class LocalizedPath {
 					return ret;
 				}
 			}
-		}
-
-		if (full)
-		{
-			return null; // give lose mode a chance to match
 		}
 
 		String ret = String.format(path, "default");
