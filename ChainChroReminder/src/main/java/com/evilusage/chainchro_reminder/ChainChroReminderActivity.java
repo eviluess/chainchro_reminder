@@ -240,14 +240,13 @@ public class ChainChroReminderActivity extends ActionBarActivity {
 
 	}
 
-	private OnClickListener onButtonClickListener = new OnClickListener() {
-
-		public void onClick(View v) {
-			switch (v.getId()) {
+	private boolean executeById(int id)
+	{
+		switch (id) {
 
 			case R.id.btnSet: {
 				setAlarm();
-				break;
+				return true;
 			}
 			case R.id.btnAfterTaste: {
 
@@ -268,29 +267,40 @@ public class ChainChroReminderActivity extends ActionBarActivity {
 					else
 					{
 						afterTaste.setDefaultHomepage(
-								new LocalizedPath(homepageUrl, null, cacheList,null)
-								.createLocalizedUrl());
+								new LocalizedPath(homepageUrl, null, null, null)
+										.createLocalizedUrl());
 					}
 				}
 
 				afterTaste.showRecommendedChoices();
 
-				break;
+				return true;
 			}
 			case R.id.btnCheckUpdate: {
 				updater.setNoUpdateNotifier(updater.defaultNoUpdateNotifier);
 				updater.showSetup();
-				break;
-			}
+				return true;
 			}
 		}
+
+		return false;
+	}
+
+	private OnClickListener onButtonClickListener = new OnClickListener() {
+
+		public void onClick(View v) {
+
+			executeById(v.getId());
+		}
 	};
+
 	private long now;
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
 		getMenuInflater().inflate(R.menu.chain_chro_reminder_main, menu);
+
 		return true;
 	}
 
@@ -381,9 +391,10 @@ public class ChainChroReminderActivity extends ActionBarActivity {
 		// automatically handle clicks on the Home/Up button, so long
 		// as you specify a parent activity in AndroidManifest.xml.
 		int id = item.getItemId();
-		if (id == R.id.action_settings) {
+
+		if (executeById(id))
 			return true;
-		}
+
 		return super.onOptionsItemSelected(item);
 	}
 }

@@ -6,14 +6,24 @@ import java.util.Locale;
 
 public class LocalizedPath {
 
-	public LocalizedPath createLocalizedUrl() {
-		return setPathChecker(new PathChecker() {
+	public PathChecker urlChecker = new PathChecker() {
 
-			@Override
-			public boolean check(final String path) {
-				return Andrutils.checkUrl(path);
-			}
-		});
+		@Override
+		public boolean check(final String path) {
+			return Andrutils.checkUrl(path);
+		}
+	};
+
+	private PathChecker bypassChecker = new PathChecker() {
+
+		@Override
+		public boolean check(final String path) {
+			return path != null ;
+		}
+	};
+
+	public LocalizedPath createLocalizedUrl() {
+		return setPathChecker(checker);
 	}
 
 	public interface PathChecker {
@@ -410,7 +420,14 @@ public class LocalizedPath {
 	}
 
 	public LocalizedPath setPathChecker(final PathChecker pathChecker) {
+
 		checker = pathChecker;
+
+		if (checker == null)
+		{
+			checker = bypassChecker;
+		}
+
 		return this;
 	}
 

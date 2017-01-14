@@ -4,9 +4,15 @@
     tools:context="com.example.chainchro_ap_remainder.ChainChroAPRemainderMainActivity" >
 
     <item
-        android:id="@+id/action_settings"
+        android:id="@+id/btnAfterTaste"
         android:orderInCategory="100"
-        android:title="@string/action_settings"
+        android:title="@string/afterTaste"
+        app:showAsAction="never"/>
+
+    <item
+        android:id="@+id/btnCheckUpdate"
+        android:orderInCategory="100"
+        android:title="@string/checkUpdate"
         app:showAsAction="never"/>
 
 </menu>
