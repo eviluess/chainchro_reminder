@@ -196,7 +196,8 @@ public class LocalizedPath {
 	 */
 
 	public static final String GOOGLECODE_WIKI = "?wl=$L2-$C4I"; // ?wl=zh-Hans
-	public static final String ANDROID_VALUE = "?wl=$L2-r$C2I"; // -zh-rTW
+	public static final String ANDROID_VALUE = "$L2-r$C2I"; // zh-rTW
+	public static final String ANDROID_WIKI_VALUE = "?wl=$L2-r$C2I"; // ?wl=-zh-rTW
 	public static final String LOCALE_STRING = "$L2_$C2I_$VI"; // en__POSIX
 	public static final String LOWERCASE_FILENAME = "$L2_$C2L"; // zh_tw
 
@@ -264,15 +265,48 @@ public class LocalizedPath {
 
 			} while (--i >= 0);
 
-			if (cacheList != null) {
+			if (cacheList != null && cacheList.size() > 0) {
 
-				Iterator<String> it = cacheList.iterator();
+				String first = cacheList.get(0);
+				boolean mapping = first.equals("default");
 
-				while (it.hasNext()) {
-					if (ret.equals(it.next())) {
-						return String.format(path, ret);
+				if (mapping) {
+
+					int total = cacheList.size() / 2;
+
+					for (i=0;i<total;i++) // i is safe to be re-used here
+					{
+						if (ret.equals(cacheList.get(i*2))) {
+							String text = String.format(path, cacheList.get(i*2+1));
+
+							if (checker.check(text))
+							{
+								return text;
+							}
+						}
+
 					}
+
+
+				} else
+				{
+					Iterator<String> it = cacheList.iterator();
+
+					while (it.hasNext()) {
+						if (ret.equals(it.next())) {
+							{
+								String text = String.format(path, ret);
+
+								if (checker.check(text))
+								{
+									return text;
+								}
+							}
+						}
+					}
+
 				}
+
 			}
 
 			ret = String.format(path, ret);

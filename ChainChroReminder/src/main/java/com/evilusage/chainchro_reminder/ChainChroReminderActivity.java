@@ -48,7 +48,10 @@ public class ChainChroReminderActivity extends ActionBarActivity {
 			"https://raw.githubusercontent.com/eviluess/chainchro_reminder/master/release/updateinfo.json";
 
 	private static final String homepageUrl =
-			"https://github.com/eviluess/chainchro_reminder/wiki/Chain-Chronicle-Reminder";
+			"https://github.com/eviluess/chainchro_reminder/wiki/%s";
+
+	private static final String homepageCacheUrl =
+			"https://raw.githubusercontent.com/eviluess/chainchro_reminder/master/release/wiki.lan";
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -66,7 +69,9 @@ public class ChainChroReminderActivity extends ActionBarActivity {
 				PackApp.getAppVersionName(this)));
 
 		afterTaste.setDefaultHomepage(new LocalizedPath(homepageUrl,
-				LocalizedPath.LOWERCASE_FILENAME, null, null)
+				LocalizedPath.LOWERCASE_FILENAME,
+				LocalizedPath.getCacheListFromUrl(homepageCacheUrl),
+				null)
 				.createLocalizedUrl());
 
 		updater = new SelfUpdater(this);

@@ -27,7 +27,7 @@
     <string name="afterTasteShareContent">The app, %1$s, is very cool and I think you might
 		like it. Check it out here: %2$s</string>
     <string name="afterTasteDonateUrl">https://www.paypal.me/Eviluess/1usd</string>
-    <string name="afterTasteDonateUrlLanInfo" translatable="false">https://dl.dropboxusercontent.com/u/1890357/donate/lan.txt</string>
+    <string name="afterTasteDonateUrlLanInfo" translatable="false">https://raw.githubusercontent.com/eviluess/chainchro_reminder/master/release/wiki.lan</string>
     <string name="afterTaste">Help and Feedback</string>
 
     <string name="afterTasteWeChat">WeChat</string>

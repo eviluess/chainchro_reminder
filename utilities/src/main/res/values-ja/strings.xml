@@ -14,7 +14,7 @@
     <string name="afterTasteSuggestion">ご提案</string>
     <string name="afterTasteBugReport">バグ情報提供</string>
     <string name="afterTasteSayHello">挨拶</string>
-    <string name="afterTasteVisitHomepage">ホームページへ</string>
+    <string name="afterTasteVisitHomepage">公式サイトへ</string>
     <string name="afterTasteSubjectSayHello">%1$sについて……</string>
     <string name="afterTasteSubjectSuggestion">%1$sについて提案がありますけと……</string>
     <string name="afterTasteSubjectBugReport">%1$sの使用中にエラーが発生しました……</string>
