@@ -50,11 +50,12 @@ public class ChainChroReminderReceiver extends BroadcastReceiver {
 			mBuilder.setLights(0x00FFFF00, 800, 400);
 
 			final String[] ccPackageNames =
-					{
-						"com.sega.chainchronicle",
-						"com.meiyu.chainchronicle.cn",
-						"net.gamon.chainchronicleTW"
-					};
+			{
+				"com.sega.chainchronicle",
+				"com.meiyu.chainchronicle.cn",
+				"net.gamon.chainchronicleTW",
+				"com.actoz.ChainC" // Korean
+			};
 
 			for (String pkgName :  ccPackageNames)
 			{
