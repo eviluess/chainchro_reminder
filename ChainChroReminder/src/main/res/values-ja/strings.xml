@@ -4,13 +4,13 @@
     <string name="ap">AP</string>
     <string name="apFullAt">APの満点時刻</string>
     <string name="apFullSoon">APは間もなく満点ですよ</string>
-    <string name="dayBreak">ブレーブの数</string>
-    <string name="dayBreakAt">ブレーブの到着時刻</string>
-    <string name="dayBreakSoon">ブレーブは間もなく満点ですよ</string>
+    <string name="dayBreak">ブレイブの数</string>
+    <string name="dayBreakAt">ブレイブの到着時刻</string>
+    <string name="dayBreakSoon">ブレイブは間もなく満点ですよ</string>
     <string name="explDoneSoon">探査は間もなく完了しますよ</string>
     <string name="exploringDoneAt">探査完了時刻</string>
     <string name="exploringRemain">探査の残り時間</string>
-    <string name="halfSoulFullAt">ソウルの半数に回復時刻</string>
+    <string name="halfSoulFullAt">ソウルが半数に回復時刻</string>
     <string name="halfSoulFullSoon">ソウルは間もなく三つに過ぎますよ</string>
     <string name="minutesToNextAP">次のAP到着時間（分）</string>
     <string name="notSet">指定しておりません</string>
@@ -20,4 +20,5 @@
     <string name="soulFullSoon">ソウルは間もなく全回復しますよ</string>
     <string name="soulRemain">ソウルの残り数時間</string>
     <string name="maxAP">限界</string>
+    <string name="dayBreakMinutes">次のブレイブ到着時間（分）</string>
 </resources>

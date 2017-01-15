@@ -8,8 +8,9 @@
     <string name="maxAP">Total</string>
     <string name="apFullAt">AP Full At</string>
     <string name="minutesToNextAP">Minutes To Next AP</string>
-    <string name="dayBreak">Day Break Remained</string>
+    <string name="dayBreak">Brave Count</string>
     <string name="dayBreakAt">Day Break At</string>
+    <string name="dayBreakMinutes">Minutes to next brave</string>
     <string name="soul">Count of Soul</string>
     <string name="soulRemain">Soul Remain Minutes</string>
     <string name="halfSoulFullAt">Soul Halves At</string>

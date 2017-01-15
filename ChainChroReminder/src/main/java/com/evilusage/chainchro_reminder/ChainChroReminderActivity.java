@@ -112,13 +112,18 @@ public class ChainChroReminderActivity extends ActionBarActivity {
 
 		putTimeToViewById(R.id.tvAPFullTime, preferences.apFullTime);
 
-		int dayBreakRemain = (int) (preferences.dayBreakTime - now) / 60;
-
-		if (dayBreakRemain < 0) {
-			dayBreakRemain = 0;
+		if (preferences.dayBreakTime == 0) {
+			putTextToViewById(R.id.etDayBreak, "0~5");
+			putTextToViewById(R.id.etDayBreakMinutes, "0~29");
 		}
+		else
+		{
+			int braveDuration = (int) (6 * 30 * 60 - (preferences.dayBreakTime - now)) / 60;
 
-		putIntToViewById(R.id.etDayBreak, dayBreakRemain);
+			putIntToViewById(R.id.etDayBreak, braveDuration / 30);
+			putIntToViewById(R.id.etDayBreakMinutes,
+					30 - (braveDuration - braveDuration / 30 * 30));
+		}
 
 		putTimeToViewById(R.id.tvDayBreakTime, preferences.dayBreakTime);
 
@@ -317,7 +322,9 @@ public class ChainChroReminderActivity extends ActionBarActivity {
 				+ ((preferences.apTotal - ap - 1) * 8 + minutesToNextAP) * 60;
 
 		int dayBreak = getIntFromViewId(R.id.etDayBreak, 0);
-		preferences.dayBreakTime = now + dayBreak * 60;
+		int dayBreakMinutes = getIntFromViewId(R.id.etDayBreakMinutes, 0);
+
+		preferences.dayBreakTime = now + (dayBreakMinutes + (5 - dayBreak) * 30) * 60;
 
 		int soul = getIntFromViewId(R.id.etSoul, 0);
 		int soulRemain = getIntFromViewId(R.id.etSoulRemain, 0);

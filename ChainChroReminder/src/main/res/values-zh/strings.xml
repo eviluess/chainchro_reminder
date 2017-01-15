@@ -3,7 +3,7 @@
     <string name="app_name">锁链战记提醒器</string>
     <string name="apFullAt">体力爆满时刻</string>
     <string name="apFullSoon">体力即将爆满</string>
-    <string name="dayBreak">天亮剩余</string>
+    <string name="dayBreak">讨伐珠数</string>
     <string name="dayBreakAt">天亮时刻</string>
     <string name="dayBreakSoon">即将天亮</string>
     <string name="explDoneSoon">探索即将结束</string>
@@ -20,4 +20,5 @@
     <string name="soulRemain">灵魂剩余时间</string>
     <string name="ap">体力</string>
     <string name="maxAP">上限</string>
+    <string name="dayBreakMinutes">1单位讨伐珠恢复剩余时间</string>
 </resources>
