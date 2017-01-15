@@ -104,39 +104,35 @@
                 android:orientation="horizontal" >
 
                 <TextView
-                    android:id="@+id/tvDayBreak"
+                    android:id="@+id/tvExploringRemain"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="@string/dayBreak" />
+                    android:layout_weight="2"
+                    android:text="@string/exploringRemain" />
 
                 <EditText
-                    android:id="@+id/etDayBreak"
+                    android:id="@+id/etERHours"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:ems="3"
+                    android:ems="2"
                     android:inputType="number"
-                    android:selectAllOnFocus="true" />
-            </LinearLayout>
-            <LinearLayout
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal" >
+                    android:selectAllOnFocus="true" >
+                </EditText>
 
                 <TextView
-                    android:id="@+id/tvDayBreakMunutes"
+                    android:id="@+id/tvERSlash"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="@string/dayBreakMinutes" />
+                    android:text=":" />
 
                 <EditText
-                    android:id="@+id/etDayBreakMinutes"
+                    android:id="@+id/etERMinutes"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:ems="3"
+                    android:ems="2"
                     android:inputType="number"
                     android:selectAllOnFocus="true" />
             </LinearLayout>
@@ -147,19 +143,20 @@
                 android:orientation="horizontal" >
 
                 <TextView
-                    android:id="@+id/tvDayBreakAt"
+                    android:id="@+id/tvExploringDoneAt"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="@string/dayBreakAt" />
+                    android:text="@string/exploringDoneAt" />
 
                 <TextView
-                    android:id="@+id/tvDayBreakTime"
+                    android:id="@+id/tvExploringDoneTime"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="2"
                     android:text="" />
             </LinearLayout>
+
 
             <LinearLayout
                 android:layout_width="fill_parent"
@@ -244,41 +241,48 @@
                     android:layout_weight="2"
                     android:text="" />
             </LinearLayout>
+
             <LinearLayout
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal" >
 
                 <TextView
-                    android:id="@+id/tvExploringRemain"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="2"
-                    android:text="@string/exploringRemain" />
-
-                <EditText
-                    android:id="@+id/etERHours"
+                    android:id="@+id/tvDayBreak"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:ems="2"
+                    android:text="@string/dayBreak" />
+
+                <EditText
+                    android:id="@+id/etDayBreak"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:ems="3"
                     android:inputType="number"
-                    android:selectAllOnFocus="true" >
-                </EditText>
+                    android:selectAllOnFocus="true" />
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal" >
 
                 <TextView
-                    android:id="@+id/tvERSlash"
+                    android:id="@+id/tvDayBreakMinutes"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text=":" />
+                    android:text="@string/dayBreakMinutes" />
 
                 <EditText
-                    android:id="@+id/etERMinutes"
+                    android:id="@+id/etDayBreakMinutes"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:ems="2"
+                    android:ems="3"
                     android:inputType="number"
                     android:selectAllOnFocus="true" />
             </LinearLayout>
@@ -289,14 +293,14 @@
                 android:orientation="horizontal" >
 
                 <TextView
-                    android:id="@+id/tvExploringDoneAt"
+                    android:id="@+id/tvDayBreakAt"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="@string/exploringDoneAt" />
+                    android:text="@string/dayBreakAt" />
 
                 <TextView
-                    android:id="@+id/tvExploringDoneTime"
+                    android:id="@+id/tvDayBreakTime"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="2"
