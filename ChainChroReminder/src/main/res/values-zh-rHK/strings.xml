@@ -8,7 +8,7 @@
     <string name="dayBreakSoon">就要天光嘞</string>
     <string name="explDoneSoon">探索即將結束嘞</string>
     <string name="exploringDoneAt">探索結束時刻</string>
-    <string name="exploringRemain">探索剩余</string>
+    <string name="exploringRemain">探索剩余分鐘</string>
     <string name="halfSoulFullAt">靈魂半滿時刻</string>
     <string name="halfSoulFullSoon">靈魂即將半滿嘞</string>
     <string name="minutesToNextAP">1單位體力恢復剩余時間</string>
