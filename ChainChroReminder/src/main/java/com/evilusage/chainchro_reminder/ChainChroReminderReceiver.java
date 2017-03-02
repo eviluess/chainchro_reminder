@@ -34,9 +34,11 @@ public class ChainChroReminderReceiver extends BroadcastReceiver {
 		preferences = new ChainChroReminderPreference(context);
 
 		preferences.load();
+
+		int id = -1;
 		
 		try {
-			int id = map.get(intent.getAction());
+			id = map.get(intent.getAction());
 
 			final android.support.v4.app.NotificationCompat.Builder mBuilder = new NotificationCompat.Builder(
 					context);
@@ -82,6 +84,11 @@ public class ChainChroReminderReceiver extends BroadcastReceiver {
 		} catch (Exception e) {
 			Log.e(TAG, "Cannot Create Noti.");
 			e.printStackTrace();
+		}
+
+		if (id == R.string.explDoneSoon)
+		{
+			context.sendBroadcast(new Intent(ChainChroReminderActivity.SCHEDULE_NEXT_EXPLORER));
 		}
 
 	}
