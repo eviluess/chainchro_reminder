@@ -53,22 +53,24 @@ public class ChainChroReminderReceiver extends BroadcastReceiver {
 
 			if (intent.getAction() == SCHEDULE_NEXT_EXPLORER)
 			{
-
 				Intent launchIntent = getCCLauncher(context);
 
 				if (launchIntent != null)
 				{
 					long now = Calendar.getInstance().getTime().getTime() / 1000;
 
-					preferences.exploringDoneTime = now + (8*60+1) * 60 + 15;
+                    if (now >= preferences.exploringDoneTime && preferences.exploringDoneTime >= 0) {
 
-					ChainChroReminderUtils utils = new ChainChroReminderUtils(context);
+                        preferences.exploringDoneTime = now + (8 * 60 + 1) * 60 + 15;
 
-					utils.setNow(now);
+                        ChainChroReminderUtils utils = new ChainChroReminderUtils(context);
 
-					utils.createAlarm(preferences.exploringDoneTime, ChainChroReminderActivity.ALERT_EXPL);
+                        utils.setNow(now);
 
-					preferences.save();
+                        utils.createAlarm(preferences.exploringDoneTime, ChainChroReminderActivity.ALERT_EXPL);
+
+                        preferences.save();
+                    }
 
 					context.startActivity(launchIntent);
 				}
@@ -96,25 +98,12 @@ public class ChainChroReminderReceiver extends BroadcastReceiver {
 			mBuilder.setVibrate(new long[]{0, 800, 200, 300, 100, 300});
 			mBuilder.setLights(0x00FFFF00, 800, 400);
 
-			if (id == R.string.explDoneSoon) {
-				final PendingIntent pendingIntent = PendingIntent.getBroadcast(context, 0,
-						new Intent(SCHEDULE_NEXT_EXPLORER), 0);
 
-				mBuilder.setContentIntent(pendingIntent);
-			} else	{
+            final PendingIntent pendingIntent = PendingIntent.getBroadcast(context, 0,
+                    new Intent(SCHEDULE_NEXT_EXPLORER), 0);
 
-				Intent launchIntent = getCCLauncher(context);
+            mBuilder.setContentIntent(pendingIntent);
 
-				if (launchIntent != null)
-				{
-					final PendingIntent pendingIntent = PendingIntent.getActivity(
-							context, 0, launchIntent, 0);
-
-					mBuilder.setContentIntent(pendingIntent);
-
-				}
-
-			}
 
 			final NotificationManager notiman = (NotificationManager) context
 					.getSystemService(Context.NOTIFICATION_SERVICE);
