@@ -20,8 +20,6 @@ public class ChainChroReminderReceiver extends BroadcastReceiver {
 
 	private ChainChroReminderPreference preferences;
 
-	private long now;
-
 	HashMap<String, Integer> map = new HashMap<String, Integer>();
 
 	private final String[] ccPackageNames =
@@ -31,26 +29,6 @@ public class ChainChroReminderReceiver extends BroadcastReceiver {
 			"net.gamon.chainchronicleTW",
 			"com.actoz.ChainC" // Korean
 	};
-
-	private void createAlarm(Context context, long time, String alert) {
-
-		if (time - now <= 0)
-			return;
-
-		Intent alarmIntent = new Intent(context,
-				ChainChroReminderReceiver.class);
-
-		alarmIntent.setAction(alert);
-
-		PendingIntent mAlarmSender = PendingIntent.getBroadcast(context, 0,
-				alarmIntent, 0);
-
-		AlarmManager am = (AlarmManager) context.getSystemService(context.ALARM_SERVICE);
-
-		am.set(AlarmManager.RTC_WAKEUP, System.currentTimeMillis()
-				+ (time - now) * 1000, mAlarmSender);
-
-	}
 
 	@Override
 	public void onReceive(Context context, Intent intent) {
@@ -80,15 +58,22 @@ public class ChainChroReminderReceiver extends BroadcastReceiver {
 
 				if (launchIntent != null)
 				{
-					now = Calendar.getInstance().getTime().getTime() / 1000;
+					long now = Calendar.getInstance().getTime().getTime() / 1000;
+
 					preferences.exploringDoneTime = now + (8*60+1) * 60 + 15;
 
-					createAlarm(context, preferences.exploringDoneTime, ChainChroReminderActivity.ALERT_EXPL);
+					ChainChroReminderUtils utils = new ChainChroReminderUtils(context);
+
+					utils.setNow(now);
+
+					utils.createAlarm(preferences.exploringDoneTime, ChainChroReminderActivity.ALERT_EXPL);
 
 					preferences.save();
 
 					context.startActivity(launchIntent);
 				}
+
+				return;
 			}
 		} catch (Exception e) {
 			Log.e(TAG, "Cannot Create Noti.");

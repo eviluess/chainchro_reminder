@@ -61,7 +61,7 @@ public class ChainChroReminderActivity extends ActionBarActivity {
 
 	private boolean isHomepageAssigned = false;
 
-	private long now;
+	private ChainChroReminderUtils utils= new ChainChroReminderUtils(this);
 
 
 	@Override
@@ -169,11 +169,11 @@ public class ChainChroReminderActivity extends ActionBarActivity {
 				createAlarm(preferences.exploringDoneTime, ChainChroReminderActivity.ALERT_EXPL);
 
 				preferences.save();
+
+				explMinites = (int)(preferences.exploringDoneTime - now);
 			}
-			else
-			{
-				explMinites /= 60;
-			}
+
+			explMinites /= 60;
 
 			putIntToViewById(R.id.etERHours, explMinites / 60 );
 			putIntToViewById(R.id.etERMinutes, explMinites - (explMinites / 60) *60);
@@ -334,7 +334,9 @@ public class ChainChroReminderActivity extends ActionBarActivity {
 		int ap = getIntFromViewId(R.id.etAP, 0);
 		int minutesToNextAP = getIntFromViewId(R.id.etMinutesToNextAP, 1);
 
-		now = Calendar.getInstance().getTime().getTime() / 1000;
+		long now = Calendar.getInstance().getTime().getTime() / 1000;
+
+		utils.setNow(now);
 
 		preferences.apFullTime = now
 				+ ((preferences.apTotal - ap - 1) * 8 + minutesToNextAP) * 60;
@@ -370,22 +372,7 @@ public class ChainChroReminderActivity extends ActionBarActivity {
 
 	private void createAlarm(long time, String alert) {
 
-		if (time - now <= 0)
-			return;
-
-		Intent alarmIntent = new Intent(this,
-				ChainChroReminderReceiver.class);
-
-		alarmIntent.setAction(alert);
-
-		PendingIntent mAlarmSender = PendingIntent.getBroadcast(this, 0,
-				alarmIntent, 0);
-
-		AlarmManager am = (AlarmManager) getSystemService(ALARM_SERVICE);
-
-		am.set(AlarmManager.RTC_WAKEUP, System.currentTimeMillis()
-				+ (time - now) * 1000, mAlarmSender);
-
+		utils.createAlarm(time, alert);
 	}
 
 	private int getIntFromViewId(int id, int defVal) {
