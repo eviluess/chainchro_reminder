@@ -22,7 +22,7 @@ public class ChainChroReminderReceiver extends BroadcastReceiver {
 
 	HashMap<String, Integer> map = new HashMap<String, Integer>();
 
-	private final String[] ccPackageNames =
+	private static final String[] ccPackageNames =
 	{
 			"com.sega.chainchronicle",
 			"com.meiyu.chainchronicle.cn",
@@ -61,7 +61,7 @@ public class ChainChroReminderReceiver extends BroadcastReceiver {
 
                     if (now >= preferences.exploringDoneTime && preferences.exploringDoneTime >= 0) {
 
-                        preferences.exploringDoneTime = now + (8 * 60 + 1) * 60 + 15;
+                        preferences.exploringDoneTime = now + (8 * 60 + 0) * 60 + 15;
 
                         ChainChroReminderUtils utils = new ChainChroReminderUtils(context);
 
@@ -97,7 +97,6 @@ public class ChainChroReminderReceiver extends BroadcastReceiver {
 
 			mBuilder.setVibrate(new long[]{0, 800, 200, 300, 100, 300});
 			mBuilder.setLights(0x00FFFF00, 800, 400);
-
 
             final PendingIntent pendingIntent = PendingIntent.getBroadcast(context, 0,
                     new Intent(SCHEDULE_NEXT_EXPLORER), 0);
