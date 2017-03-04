@@ -31,12 +31,11 @@ import eviluess.pkg.Utilities.PackApp;
 
 public class ChainChroReminderActivity extends ActionBarActivity {
 
-	public static final String ALERT_AP = "com.evilusage.chainchro_reminder.ALERT_AP";
-	public static final String ALERT_DAYBREAK = "com.evilusage.chainchro_reminder.ALERT_DAYBREAK";
-	public static final String ALERT_SOUL = "com.evilusage.chainchro_reminder.ALERT_SOUL";
-	public static final String ALERT_HALFSOUL = "com.evilusage.chainchro_reminder.ALERT_HALFSOUL";
-	public static final String ALERT_EXPL = "com.evilusage.chainchro_reminder.ALERT_EXPL";
-	public static final String SCHEDULE_NEXT_EXPLORER = "Schedule Next Explorer";
+	public static final String ALERT_AP = "com.evilusage.chainchro_reminder.alert_ap";
+	public static final String ALERT_DAYBREAK = "com.evilusage.chainchro_reminder.alert_brave";
+	public static final String ALERT_SOUL = "com.evilusage.chainchro_reminder.alert_soul";
+	public static final String ALERT_HALFSOUL = "com.evilusage.chainchro_reminder.alert_halfsoul";
+	public static final String ALERT_EXPL = "com.evilusage.chainchro_reminder.alert_explorer";
 
 	private static final String TAG = "ChainChroReminderActivity";
 
@@ -98,21 +97,6 @@ public class ChainChroReminderActivity extends ActionBarActivity {
 
 		updateParams();
 
-		registerReceiver(broadcastReceiver, new IntentFilter(SCHEDULE_NEXT_EXPLORER));
-
-	}
-
-	private BroadcastReceiver broadcastReceiver = new BroadcastReceiver() {
-		@Override
-		public void onReceive(Context context, Intent intent) {
-			scheduleNextExplorer();
-		}
-	};
-
-	@Override
-	protected void onDestroy() {
-		super.onDestroy();
-		unregisterReceiver(broadcastReceiver);
 	}
 
 	private void updateParams() {
@@ -175,7 +159,21 @@ public class ChainChroReminderActivity extends ActionBarActivity {
 		}
 		else
 		{
-			int explMinites =  (int)(preferences.exploringDoneTime - now)/60;
+			int explMinites = (int)(preferences.exploringDoneTime - now);
+
+			if (explMinites < 0)
+			{
+				now = Calendar.getInstance().getTime().getTime() / 1000;
+				preferences.exploringDoneTime = now + (7*60+59) * 60 + 3;
+
+				createAlarm(preferences.exploringDoneTime, ChainChroReminderActivity.ALERT_EXPL);
+
+				preferences.save();
+			}
+			else
+			{
+				explMinites /= 60;
+			}
 
 			putIntToViewById(R.id.etERHours, explMinites / 60 );
 			putIntToViewById(R.id.etERMinutes, explMinites - (explMinites / 60) *60);
@@ -425,12 +423,4 @@ public class ChainChroReminderActivity extends ActionBarActivity {
 		return super.onOptionsItemSelected(item);
 	}
 
-	private void scheduleNextExplorer() {
-
-		preferences.exploringDoneTime += (7*60+58) * 60 + 18;
-
-		createAlarm(preferences.exploringDoneTime, ALERT_EXPL);
-
-		preferences.save();
-	}
 }

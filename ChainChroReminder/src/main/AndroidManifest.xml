@@ -27,19 +27,22 @@
             android:name="com.evilusage.chainchro_reminder.ChainChroReminderReceiver"
             android:enabled="true" >
             <intent-filter>
-                <action android:name="com.evilusage.chainchro_reminder.ALERT_AP" />
+                <action android:name="com.evilusage.chainchro_reminder.alert_ap" />
             </intent-filter>
             <intent-filter>
-                <action android:name="com.evilusage.chainchro_reminder.ALERT_DAYBREAK" />
+                <action android:name="com.evilusage.chainchro_reminder.alert_brave" />
             </intent-filter>
             <intent-filter>
-                <action android:name="com.evilusage.chainchro_reminder.ALERT_SOUL" />
+                <action android:name="com.evilusage.chainchro_reminder.alert_soul" />
             </intent-filter>
             <intent-filter>
-                <action android:name="com.evilusage.chainchro_reminder.ALERT_HALFSOUL" />
+                <action android:name="com.evilusage.chainchro_reminder.alert_halfsoul" />
             </intent-filter>
             <intent-filter>
-                <action android:name="com.evilusage.chainchro_reminder.ALERT_EXPL" />
+                <action android:name="com.evilusage.chainchro_reminder.alert_explorer" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="com.evilusage.chainchro_reminder.schedule_next_explorer" />
             </intent-filter>
         </receiver>
     </application>
