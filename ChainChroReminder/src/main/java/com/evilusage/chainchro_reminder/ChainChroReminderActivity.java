@@ -323,7 +323,7 @@ public class ChainChroReminderActivity extends AppCompatActivity {
 		int ap = getIntFromViewId(R.id.etAP, 0);
 		int minutesToNextAP = getIntFromViewId(R.id.etMinutesToNextAP, 1);
 
-		long now = Calendar.getInstance().getTime().getTime() / 1000;
+		long now = Calendar.getInstance().getTime().getTime() / 1000 + 2;
 
 		preferences.apFullTime = now
 				+ ((preferences.apTotal - ap - 1) * 8 + minutesToNextAP) * 60;

@@ -104,7 +104,7 @@ public class ChainChroReminderReceiver extends BroadcastReceiver {
 			final NotificationManager notificationManager = (NotificationManager) context
 					.getSystemService(Context.NOTIFICATION_SERVICE);
 
-			notificationManager.notify(0, mBuilder.build());
+			notificationManager.notify(id, mBuilder.build());
 
 
 		} catch (Exception e) {
