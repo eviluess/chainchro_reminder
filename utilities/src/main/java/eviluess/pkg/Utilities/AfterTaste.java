@@ -185,6 +185,7 @@ public class AfterTaste {
 											context.getString(R.string.afterTasteContactCopied), selected),
 											Toast.LENGTH_LONG).show();
 
+									//noinspection deprecation
 									ClipboardManager cm = (ClipboardManager) context.getSystemService(CLIPBOARD_SERVICE);
 									cm.setText(selected);
 

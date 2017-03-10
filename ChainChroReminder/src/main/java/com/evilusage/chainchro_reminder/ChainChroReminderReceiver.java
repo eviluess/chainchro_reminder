@@ -3,7 +3,6 @@ package com.evilusage.chainchro_reminder;
 import java.util.Calendar;
 import java.util.HashMap;
 
-import android.app.AlarmManager;
 import android.app.Notification;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
@@ -15,7 +14,7 @@ import android.util.Log;
 
 public class ChainChroReminderReceiver extends BroadcastReceiver {
 
-	private static final String TAG = "ChainChroReminderReceiver";
+	private static final String TAG = "CCR.Receiver";
 	public static final String SCHEDULE_NEXT_EXPLORER = "com.evilusage.chainchro_reminder.schedule_next_explorer";
 
 	private ChainChroReminderPreference preferences;
@@ -39,7 +38,7 @@ public class ChainChroReminderReceiver extends BroadcastReceiver {
 		map.put(ChainChroReminderActivity.ALERT_SOUL, R.string.soulFullSoon);
 		map.put(ChainChroReminderActivity.ALERT_HALFSOUL,
 				R.string.halfSoulFullSoon);
-		map.put(ChainChroReminderActivity.ALERT_EXPL,
+		map.put(ChainChroReminderActivity.ALERT_EXPLORER,
 				R.string.explDoneSoon);
 
 
@@ -51,7 +50,7 @@ public class ChainChroReminderReceiver extends BroadcastReceiver {
 
 		try {
 
-			if (intent.getAction() == SCHEDULE_NEXT_EXPLORER)
+			if (SCHEDULE_NEXT_EXPLORER == intent.getAction())
 			{
 				Intent launchIntent = getCCLauncher(context);
 
@@ -65,9 +64,7 @@ public class ChainChroReminderReceiver extends BroadcastReceiver {
 
                         ChainChroReminderUtils utils = new ChainChroReminderUtils(context);
 
-                        utils.setNow(now);
-
-                        utils.createAlarm(preferences.exploringDoneTime, ChainChroReminderActivity.ALERT_EXPL);
+                        utils.createAlarm(preferences.exploringDoneTime, ChainChroReminderActivity.ALERT_EXPLORER, now);
 
                         preferences.save();
                     }
@@ -78,11 +75,11 @@ public class ChainChroReminderReceiver extends BroadcastReceiver {
 				return;
 			}
 		} catch (Exception e) {
-			Log.e(TAG, "Cannot Create Noti.");
+			Log.e(TAG, "Cannot Create Notification");
 			e.printStackTrace();
 		}
 
-		int id = -1;
+		int id;
 		
 		try {
 			id = map.get(intent.getAction());
@@ -104,14 +101,14 @@ public class ChainChroReminderReceiver extends BroadcastReceiver {
             mBuilder.setContentIntent(pendingIntent);
 
 
-			final NotificationManager notiman = (NotificationManager) context
+			final NotificationManager notificationManager = (NotificationManager) context
 					.getSystemService(Context.NOTIFICATION_SERVICE);
 
-			notiman.notify(0, mBuilder.build());
+			notificationManager.notify(0, mBuilder.build());
 
 
 		} catch (Exception e) {
-			Log.e(TAG, "Cannot Create Noti.");
+			Log.e(TAG, "Cannot Create Notification");
 			e.printStackTrace();
 		}
 

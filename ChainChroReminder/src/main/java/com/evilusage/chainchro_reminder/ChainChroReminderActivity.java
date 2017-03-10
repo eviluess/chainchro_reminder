@@ -1,18 +1,7 @@
 package com.evilusage.chainchro_reminder;
 
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Date;
-
-
-import android.app.AlarmManager;
-import android.app.PendingIntent;
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import android.content.IntentFilter;
 import android.os.Bundle;
-import android.support.v7.app.ActionBarActivity;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -23,21 +12,26 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.TextView;
-import eviluess.pkg.Utilities.Andrutils;
+
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
+
 import eviluess.pkg.Utilities.AfterTaste;
 import eviluess.pkg.Utilities.LocalizedPath;
-import eviluess.pkg.Utilities.SelfUpdater;
 import eviluess.pkg.Utilities.PackApp;
+import eviluess.pkg.Utilities.SelfUpdater;
 
-public class ChainChroReminderActivity extends ActionBarActivity {
+
+public class ChainChroReminderActivity extends AppCompatActivity {
 
 	public static final String ALERT_AP = "com.evilusage.chainchro_reminder.alert_ap";
 	public static final String ALERT_DAYBREAK = "com.evilusage.chainchro_reminder.alert_brave";
 	public static final String ALERT_SOUL = "com.evilusage.chainchro_reminder.alert_soul";
 	public static final String ALERT_HALFSOUL = "com.evilusage.chainchro_reminder.alert_halfsoul";
-	public static final String ALERT_EXPL = "com.evilusage.chainchro_reminder.alert_explorer";
+	public static final String ALERT_EXPLORER = "com.evilusage.chainchro_reminder.alert_explorer";
 
-	private static final String TAG = "ChainChroReminderActivity";
+	private static final String TAG = "CCR.Activity";
 
 	private ChainChroReminderPreference preferences;
 
@@ -61,7 +55,7 @@ public class ChainChroReminderActivity extends ActionBarActivity {
 
 	private boolean isHomepageAssigned = false;
 
-	private ChainChroReminderUtils utils= new ChainChroReminderUtils(this);
+	private ChainChroReminderUtils utils = new ChainChroReminderUtils(this);
 
 
 	@Override
@@ -159,35 +153,30 @@ public class ChainChroReminderActivity extends ActionBarActivity {
 		}
 		else
 		{
-			int explMinites = (int)(preferences.exploringDoneTime - now);
+			int exclMinutes = (int)(preferences.exploringDoneTime - now);
 
-			if (explMinites < 0)
+			if (exclMinutes < 0)
 			{
-				now = Calendar.getInstance().getTime().getTime() / 1000;
 				preferences.exploringDoneTime = now + (7*60+59) * 60 + 3;
 
-				createAlarm(preferences.exploringDoneTime, ChainChroReminderActivity.ALERT_EXPL);
+				createAlarm(preferences.exploringDoneTime, ChainChroReminderActivity.ALERT_EXPLORER, now);
 
 				preferences.save();
 
-				explMinites = (int)(preferences.exploringDoneTime - now);
+				exclMinutes = (int)(preferences.exploringDoneTime - now);
 			}
 
-			explMinites /= 60;
+			exclMinutes /= 60;
 
-			putIntToViewById(R.id.etERHours, explMinites / 60 );
-			putIntToViewById(R.id.etERMinutes, explMinites - (explMinites / 60) *60);
+			putIntToViewById(R.id.etERHours, exclMinutes / 60 );
+			putIntToViewById(R.id.etERMinutes, exclMinutes - (exclMinutes / 60) *60);
 		}
 
 		putTimeToViewById(R.id.tvExploringDoneTime, preferences.exploringDoneTime);
 
 	}
 
-	private void putTextToViewById(int id, int text) {
-		Andrutils.putTextToViewById(this, id, text);
-	}
-
-	private void putTextToViewById(int id, final String text) {
+    private void putTextToViewById(int id, final String text) {
 
 		TextView tv = (TextView) findViewById(id);
 
@@ -336,8 +325,6 @@ public class ChainChroReminderActivity extends ActionBarActivity {
 
 		long now = Calendar.getInstance().getTime().getTime() / 1000;
 
-		utils.setNow(now);
-
 		preferences.apFullTime = now
 				+ ((preferences.apTotal - ap - 1) * 8 + minutesToNextAP) * 60;
 
@@ -356,23 +343,23 @@ public class ChainChroReminderActivity extends ActionBarActivity {
 
 		preferences.exploringDoneTime = now + (expHours*60+expMinutes) * 60;
 
-		createAlarm(preferences.apFullTime, ALERT_AP);
+		createAlarm(preferences.apFullTime, ALERT_AP, now);
 
-		createAlarm(preferences.dayBreakTime, ALERT_DAYBREAK);
+		createAlarm(preferences.dayBreakTime, ALERT_DAYBREAK, now);
 
-		createAlarm(preferences.soulFullTime, ALERT_SOUL);
+		createAlarm(preferences.soulFullTime, ALERT_SOUL, now);
 
-		createAlarm(preferences.soulFullTime - 30 * 60 * 3, ALERT_HALFSOUL);
+		createAlarm(preferences.soulFullTime - 30 * 60 * 3, ALERT_HALFSOUL, now);
 
-		createAlarm(preferences.exploringDoneTime, ALERT_EXPL);
+		createAlarm(preferences.exploringDoneTime, ALERT_EXPLORER, now);
 
 		preferences.save();
 		updateParams();
 	}
 
-	private void createAlarm(long time, String alert) {
+	private void createAlarm(long time, String alert, long now) {
 
-		utils.createAlarm(time, alert);
+		utils.createAlarm(time, alert, now);
 	}
 
 	private int getIntFromViewId(int id, int defVal) {
@@ -404,10 +391,8 @@ public class ChainChroReminderActivity extends ActionBarActivity {
 		// as you specify a parent activity in AndroidManifest.xml.
 		int id = item.getItemId();
 
-		if (executeById(id))
-			return true;
+		return executeById(id) || super.onOptionsItemSelected(item);
 
-		return super.onOptionsItemSelected(item);
 	}
 
 }

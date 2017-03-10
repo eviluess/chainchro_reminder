@@ -9,19 +9,13 @@ import android.content.Intent;
 public class ChainChroReminderUtils {
 
     private Context context = null;
-    private long now = 0;
 
     public ChainChroReminderUtils(Context context)
     {
         this.context = context;
     }
 
-    public void setNow(long now)
-    {
-        this.now = now;
-    }
-    
-    public void createAlarm(long time, String alert) {
+    public void createAlarm(long time, String alert, long now) {
 
         if (time - now <= 0)
             return;
