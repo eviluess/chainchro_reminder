@@ -1,8 +1,5 @@
 package com.evilusage.chainchro_reminder;
 
-import java.util.Calendar;
-import java.util.HashMap;
-
 import android.app.Notification;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
@@ -11,6 +8,9 @@ import android.content.Context;
 import android.content.Intent;
 import android.support.v4.app.NotificationCompat;
 import android.util.Log;
+
+import java.util.Calendar;
+import java.util.HashMap;
 
 import static android.support.v4.app.NotificationCompat.VISIBILITY_PUBLIC;
 
@@ -68,8 +68,11 @@ public class ChainChroReminderReceiver extends BroadcastReceiver {
 
                         utils.createAlarm(preferences.exploringDoneTime, ChainChroReminderActivity.ALERT_EXPLORER, now);
 
+                        utils.announceAutoScheduled(preferences.exploringDoneTime);
+
                         preferences.save();
                     }
+
 
 					context.startActivity(launchIntent);
 				}

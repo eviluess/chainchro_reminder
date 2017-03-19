@@ -164,6 +164,8 @@ public class ChainChroReminderActivity extends AppCompatActivity {
 				preferences.save();
 
 				exclMinutes = (int)(preferences.exploringDoneTime - now);
+
+				utils.announceAutoScheduled(preferences.exploringDoneTime);
 			}
 
 			exclMinutes /= 60;
