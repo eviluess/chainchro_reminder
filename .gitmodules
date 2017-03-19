@@ -1,0 +1,3 @@
+[submodule "utilities-for-android"]
+	path = utilities-for-android
+	url = https://github.com/eviluess/utilities-for-android.git
