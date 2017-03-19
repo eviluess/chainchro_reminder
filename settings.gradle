@@ -1,2 +1,2 @@
-include ':utilities'
+include ':utilities-for-android'
 include ':ChainChroReminder'

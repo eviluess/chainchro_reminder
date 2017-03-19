@@ -12,6 +12,8 @@ import android.content.Intent;
 import android.support.v4.app.NotificationCompat;
 import android.util.Log;
 
+import static android.support.v4.app.NotificationCompat.VISIBILITY_PUBLIC;
+
 public class ChainChroReminderReceiver extends BroadcastReceiver {
 
 	private static final String TAG = "CCR.Receiver";
@@ -93,6 +95,7 @@ public class ChainChroReminderReceiver extends BroadcastReceiver {
 			mBuilder.setDefaults(Notification.DEFAULT_SOUND);
 
 			mBuilder.setVibrate(new long[]{0, 800, 200, 300, 100, 300});
+			mBuilder.setVisibility(VISIBILITY_PUBLIC);
 			mBuilder.setLights(0x00FFFF00, 800, 400);
 
             final PendingIntent pendingIntent = PendingIntent.getBroadcast(context, 0,
