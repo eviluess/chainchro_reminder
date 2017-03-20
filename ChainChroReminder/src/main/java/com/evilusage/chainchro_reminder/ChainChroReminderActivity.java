@@ -32,6 +32,7 @@ public class ChainChroReminderActivity extends AppCompatActivity {
 	public static final String ALERT_EXPLORER = "com.evilusage.chainchro_reminder.alert_explorer";
 
 	private static final String TAG = "CCR.Activity";
+	private static final int SOUL_AHEAD = (int)(4.5*60);
 
 	private ChainChroReminderPreference preferences;
 
@@ -133,19 +134,17 @@ public class ChainChroReminderActivity extends AppCompatActivity {
 		}
 		else
 		{
-			int soulDuration = (int) (6 * 30 * 60 - (preferences.soulFullTime - now)) / 60;
+			int soulDuration = (int) (6 * 30 * 60 - (preferences.soulFullTime - now + SOUL_AHEAD )) / 60;
 
 			putIntToViewById(R.id.etSoul, soulDuration / 30);
 			putIntToViewById(R.id.etSoulRemain,
 					30 - (soulDuration - soulDuration / 30 * 30));
 		}
 
-
 		putTimeToViewById(R.id.tvSoulFullTime, preferences.soulFullTime);
 
 		putTimeToViewById(R.id.tvHalfSoulFullTime,
-				preferences.soulFullTime - 30 * 60 * 3);
-
+				preferences.soulFullTime + SOUL_AHEAD - 30 * 60 * 3);
 
 		if (preferences.exploringDoneTime == 0) {
 			putTextToViewById(R.id.etERHours, "0~7");
@@ -333,12 +332,12 @@ public class ChainChroReminderActivity extends AppCompatActivity {
 		int dayBreak = getIntFromViewId(R.id.etDayBreak, 0);
 		int dayBreakMinutes = getIntFromViewId(R.id.etDayBreakMinutes, 0);
 
-		preferences.dayBreakTime = now + (dayBreakMinutes + (5 - dayBreak) * 30) * 60;
+		preferences.dayBreakTime = now + (dayBreakMinutes + (5 - dayBreak) * 30) * 60 - 8;
 
 		int soul = getIntFromViewId(R.id.etSoul, 0);
 		int soulRemain = getIntFromViewId(R.id.etSoulRemain, 0);
 
-		preferences.soulFullTime = now + (soulRemain + (5 - soul) * 30) * 60;
+		preferences.soulFullTime = now + (soulRemain + (5 - soul) * 30 ) * 60 - SOUL_AHEAD - 8;
 
 		int expHours = getIntFromViewId(R.id.etERHours, 7);
 		int expMinutes = getIntFromViewId(R.id.etERMinutes, 58);
@@ -349,9 +348,16 @@ public class ChainChroReminderActivity extends AppCompatActivity {
 
 		createAlarm(preferences.dayBreakTime, ALERT_DAYBREAK, now);
 
-		createAlarm(preferences.soulFullTime, ALERT_SOUL, now);
+		if (preferences.soulFullTime < now)
+		{
+			createAlarm(now + 4, ALERT_SOUL, now);
+		}
+		else
+		{
+			createAlarm(preferences.soulFullTime, ALERT_SOUL, now);
+		}
 
-		createAlarm(preferences.soulFullTime - 30 * 60 * 3, ALERT_HALFSOUL, now);
+		createAlarm(preferences.soulFullTime + SOUL_AHEAD - 30 * 60 * 3, ALERT_HALFSOUL, now);
 
 		createAlarm(preferences.exploringDoneTime, ALERT_EXPLORER, now);
 
