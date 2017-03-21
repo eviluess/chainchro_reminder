@@ -348,7 +348,7 @@ public class ChainChroReminderActivity extends AppCompatActivity {
 
 		createAlarm(preferences.dayBreakTime, ALERT_DAYBREAK, now);
 
-		if (preferences.soulFullTime < now)
+		if (preferences.soulFullTime < now && soul < 6)
 		{
 			createAlarm(now + 4, ALERT_SOUL, now);
 		}
