@@ -67,7 +67,7 @@ public class ChainChroReminderActivity extends AppCompatActivity {
 		assignCallbacks(getScrollView());
 
 		preferences = new ChainChroReminderPreference(this);
-		preferences.load();
+
 
 		afterTaste = new AfterTaste(this);
 
@@ -95,6 +95,8 @@ public class ChainChroReminderActivity extends AppCompatActivity {
 	}
 
 	private void updateParams() {
+
+		preferences.load();
 
 		putIntToViewById(R.id.etApTotal, preferences.apTotal);
 
