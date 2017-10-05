@@ -1,5 +1,6 @@
 package com.evilusage.chainchro_reminder;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -257,6 +258,8 @@ public class ChainChroReminderActivity extends AppCompatActivity {
 
 			case R.id.btnSet: {
 				configAndSetAlarms();
+
+                 startActivity(new Intent(this, ChainChroReminderListActivity.class));
 				return true;
 			}
 			case R.id.btnAfterTaste: {

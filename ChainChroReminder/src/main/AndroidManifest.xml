@@ -16,7 +16,7 @@
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
         <activity
-            android:name="com.evilusage.chainchro_reminder.ChainChroReminderActivity"
+            android:name=".ChainChroReminderActivity"
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -25,8 +25,13 @@
             </intent-filter>
         </activity>
 
+        <activity
+            android:name=".ChainChroReminderListActivity"
+            android:label="@string/app_name" >
+        </activity>
+
         <receiver
-            android:name="com.evilusage.chainchro_reminder.ChainChroReminderReceiver"
+            android:name=".ChainChroReminderReceiver"
             android:enabled="true" >
             <intent-filter>
                 <action android:name="com.evilusage.chainchro_reminder.alert_ap" />
