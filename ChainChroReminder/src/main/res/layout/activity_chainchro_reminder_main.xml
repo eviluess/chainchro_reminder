@@ -207,7 +207,7 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal" >
 
-                <TextView
+                <CheckedTextView
                     android:id="@+id/tvHalfSoulFullAt"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"

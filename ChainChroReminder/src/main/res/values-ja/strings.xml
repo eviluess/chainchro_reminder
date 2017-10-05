@@ -21,4 +21,5 @@
     <string name="soulRemain">ソウルの残り数時間</string>
     <string name="maxAP">限界</string>
     <string name="dayBreakMinutes">次のブレイブ到着時間（分）</string>
+    <string name="explAutoScheduled">次の探索の完了時刻は%1$sになります</string>
 </resources>

@@ -5,6 +5,9 @@ import android.app.AlarmManager;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
+import android.widget.Toast;
+
+import java.util.Date;
 
 public class ChainChroReminderUtils {
 
@@ -13,6 +16,16 @@ public class ChainChroReminderUtils {
     public ChainChroReminderUtils(Context context)
     {
         this.context = context;
+    }
+
+    public void announceAutoScheduled(long time)
+    {
+        Date future = new Date();
+        future.setTime(time * 1000);
+
+        Toast.makeText(context,  String.format(
+                context.getString(R.string.explAutoScheduled), future.toLocaleString()), Toast.LENGTH_LONG).show();
+
     }
 
     public void createAlarm(long time, String alert, long now) {

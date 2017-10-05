@@ -4,6 +4,13 @@
     tools:context="com.example.chainchro_ap_remainder.ChainChroAPRemainderMainActivity" >
 
     <item
+        android:id="@+id/btnSet"
+        android:orderInCategory="100"
+        android:icon="@drawable/ic_alarm_add_24dp"
+        android:title="@string/setReminders"
+        app:showAsAction="ifRoom"/>
+
+    <item
         android:id="@+id/btnAfterTaste"
         android:orderInCategory="100"
         android:title="@string/afterTaste"
