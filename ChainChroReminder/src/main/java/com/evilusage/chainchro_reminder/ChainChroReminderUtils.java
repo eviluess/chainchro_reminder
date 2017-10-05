@@ -63,7 +63,13 @@ public class ChainChroReminderUtils {
 
     }
 
+    public void setAlarms(ChainChroReminderPreference preferences, long now)
+    {
+        setAlarms(preferences, now, 7);
+    }
+
     public void setAlarms(ChainChroReminderPreference preferences, long now, int soul) {
+
         createAlarm(preferences.apFullTime, ALERT_AP, now);
 
         createAlarm(preferences.dayBreakTime, ALERT_DAYBREAK, now);

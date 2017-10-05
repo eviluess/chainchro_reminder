@@ -59,7 +59,7 @@ public class ChainChroReminderReceiver extends BroadcastReceiver {
 				long now = Calendar.getInstance().getTime().getTime() / 1000;
 				ChainChroReminderUtils utils = new ChainChroReminderUtils(context);
 
-				utils.setAlarms(preferences, now, 7);
+				utils.setAlarms(preferences, now);
 
 				utils.announceAutoScheduled(0);
 
