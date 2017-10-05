@@ -149,9 +149,9 @@ public class ChainChroReminderActivity extends AppCompatActivity {
 		}
 		else
 		{
-			int exclMinutes = (int)(preferences.exploringDoneTime - now);
+			int explSeconds = (int)(preferences.exploringDoneTime - now);
 
-			if (exclMinutes < 0)
+			if (explSeconds < 0)
 			{
 				preferences.exploringDoneTime = now + (7*60+59) * 60 + 3;
 
@@ -159,15 +159,15 @@ public class ChainChroReminderActivity extends AppCompatActivity {
 
 				preferences.save();
 
-				exclMinutes = (int)(preferences.exploringDoneTime - now);
+				explSeconds = (int)(preferences.exploringDoneTime - now);
 
 				utils.announceAutoScheduled(preferences.exploringDoneTime);
 			}
 
-			exclMinutes /= 60;
+			explSeconds /= 60;
 
-			putIntToViewById(R.id.etERHours, exclMinutes / 60 );
-			putIntToViewById(R.id.etERMinutes, exclMinutes - (exclMinutes / 60) *60);
+			putIntToViewById(R.id.etERHours, explSeconds / 60 );
+			putIntToViewById(R.id.etERMinutes, explSeconds - (explSeconds / 60) *60);
 		}
 
 		putTimeToViewById(R.id.tvExploringDoneTime, preferences.exploringDoneTime);

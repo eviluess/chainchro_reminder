@@ -14,7 +14,7 @@
     <string name="minutesToNextAP">1單位體力恢復剩余時間</string>
     <string name="notSet">未設置</string>
     <string name="setReminders">設置提醒</string>
-    <string name="soul">靈魂數</string>
+    <string name="numSoul">靈魂數</string>
     <string name="soulFullAt">靈魂爆滿時刻</string>
     <string name="soulFullSoon">靈魂即將爆滿</string>
     <string name="soulRemain">靈魂剩余時間</string>
@@ -23,4 +23,8 @@
     <string name="dayBreakMinutes">1單位討伐珠恢復剩余時間</string>
     <string name="explAutoScheduled">已自動規劃下次探索結束時刻為%1$s</string>
     <string name="alarmsRecovered">設備已重啓，自動設置所有提醒</string>
+    <string name="brave">討伐珠</string>
+    <string name="exploring">探索</string>
+    <string name="soul">靈魂</string>
+    <string name="time">時刻</string>
 </resources>

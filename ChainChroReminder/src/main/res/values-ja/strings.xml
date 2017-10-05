@@ -15,7 +15,7 @@
     <string name="minutesToNextAP">次のAP到着時間（分）</string>
     <string name="notSet">指定しておりません</string>
     <string name="setReminders">リマインダーをセット</string>
-    <string name="soul">ソウル</string>
+    <string name="numSoul">ソウル</string>
     <string name="soulFullAt">ソウルの全回復時刻</string>
     <string name="soulFullSoon">ソウルは間もなく全回復しますよ</string>
     <string name="soulRemain">ソウルの残り数時間</string>
@@ -23,4 +23,8 @@
     <string name="dayBreakMinutes">次のブレイブ到着時間（分）</string>
     <string name="explAutoScheduled">次の探索の完了時刻は%1$sになります</string>
     <string name="alarmsRecovered">再起動のでアラームを再設定しました</string>
+    <string name="brave">ブレイブ</string>
+    <string name="exploring">探索</string>
+    <string name="soul">ソウル</string>
+    <string name="time">時刻</string>
 </resources>
