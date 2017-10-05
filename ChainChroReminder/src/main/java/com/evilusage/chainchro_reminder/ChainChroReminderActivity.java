@@ -25,14 +25,8 @@ import eviluess.pkg.Utilities.SelfUpdater;
 
 public class ChainChroReminderActivity extends AppCompatActivity {
 
-	public static final String ALERT_AP = "com.evilusage.chainchro_reminder.alert_ap";
-	public static final String ALERT_DAYBREAK = "com.evilusage.chainchro_reminder.alert_brave";
-	public static final String ALERT_SOUL = "com.evilusage.chainchro_reminder.alert_soul";
-	public static final String ALERT_HALFSOUL = "com.evilusage.chainchro_reminder.alert_halfsoul";
-	public static final String ALERT_EXPLORER = "com.evilusage.chainchro_reminder.alert_explorer";
 
 	private static final String TAG = "CCR.Activity";
-	private static final int SOUL_AHEAD = (int)(4.5*60);
 
 	private ChainChroReminderPreference preferences;
 
@@ -136,7 +130,7 @@ public class ChainChroReminderActivity extends AppCompatActivity {
 		}
 		else
 		{
-			int soulDuration = (int) (6 * 30 * 60 - (preferences.soulFullTime - now + SOUL_AHEAD )) / 60;
+			int soulDuration = (int) (6 * 30 * 60 - (preferences.soulFullTime - now + ChainChroReminderUtils.SOUL_AHEAD )) / 60;
 
 			putIntToViewById(R.id.etSoul, soulDuration / 30);
 			putIntToViewById(R.id.etSoulRemain,
@@ -146,7 +140,7 @@ public class ChainChroReminderActivity extends AppCompatActivity {
 		putTimeToViewById(R.id.tvSoulFullTime, preferences.soulFullTime);
 
 		putTimeToViewById(R.id.tvHalfSoulFullTime,
-				preferences.soulFullTime + SOUL_AHEAD - 30 * 60 * 3);
+				preferences.soulFullTime + ChainChroReminderUtils.SOUL_AHEAD - 30 * 60 * 3);
 
 		if (preferences.exploringDoneTime == 0) {
 			putTextToViewById(R.id.etERHours, "0~7");
@@ -160,7 +154,7 @@ public class ChainChroReminderActivity extends AppCompatActivity {
 			{
 				preferences.exploringDoneTime = now + (7*60+59) * 60 + 3;
 
-				createAlarm(preferences.exploringDoneTime, ChainChroReminderActivity.ALERT_EXPLORER, now);
+				createAlarm(preferences.exploringDoneTime, utils.ALERT_EXPLORER, now);
 
 				preferences.save();
 
@@ -262,7 +256,7 @@ public class ChainChroReminderActivity extends AppCompatActivity {
 		switch (id) {
 
 			case R.id.btnSet: {
-				setAlarm();
+				configAndSetAlarms();
 				return true;
 			}
 			case R.id.btnAfterTaste: {
@@ -319,7 +313,7 @@ public class ChainChroReminderActivity extends AppCompatActivity {
 		return true;
 	}
 
-	private void setAlarm() {
+	private void configAndSetAlarms() {
 
 		preferences.apTotal = getIntFromViewId(R.id.etApTotal, 1);
 
@@ -339,33 +333,21 @@ public class ChainChroReminderActivity extends AppCompatActivity {
 		int soul = getIntFromViewId(R.id.etSoul, 0);
 		int soulRemain = getIntFromViewId(R.id.etSoulRemain, 0);
 
-		preferences.soulFullTime = now + (soulRemain + (5 - soul) * 30 ) * 60 - SOUL_AHEAD - 8;
+		preferences.soulFullTime = now + (soulRemain + (5 - soul) * 30 ) * 60 - ChainChroReminderUtils.SOUL_AHEAD - 8;
 
 		int expHours = getIntFromViewId(R.id.etERHours, 7);
 		int expMinutes = getIntFromViewId(R.id.etERMinutes, 58);
 
 		preferences.exploringDoneTime = now + (expHours*60+expMinutes) * 60;
 
-		createAlarm(preferences.apFullTime, ALERT_AP, now);
-
-		createAlarm(preferences.dayBreakTime, ALERT_DAYBREAK, now);
-
-		if (preferences.soulFullTime < now && soul < 6)
-		{
-			createAlarm(now + 4, ALERT_SOUL, now);
-		}
-		else
-		{
-			createAlarm(preferences.soulFullTime, ALERT_SOUL, now);
-		}
-
-		createAlarm(preferences.soulFullTime + SOUL_AHEAD - 30 * 60 * 3, ALERT_HALFSOUL, now);
-
-		createAlarm(preferences.exploringDoneTime, ALERT_EXPLORER, now);
-
 		preferences.save();
+
 		updateParams();
+
+		utils.setAlarms(preferences, now, soul);
 	}
+
+
 
 	private void createAlarm(long time, String alert, long now) {
 

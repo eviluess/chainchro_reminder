@@ -22,4 +22,5 @@
     <string name="maxAP">上限</string>
     <string name="dayBreakMinutes">1单位讨伐珠恢复剩余时间</string>
     <string name="explAutoScheduled">已自动规划下次探索结束时刻为%1$s</string>
+    <string name="alarmsRecovered">设备已重启，自动设置所有提醒</string>
 </resources>

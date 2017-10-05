@@ -18,6 +18,8 @@ public class ChainChroReminderReceiver extends BroadcastReceiver {
 
 	private static final String TAG = "CCR.Receiver";
 	public static final String SCHEDULE_NEXT_EXPLORER = "com.evilusage.chainchro_reminder.schedule_next_explorer";
+	private static final String ACTION_BOOT_COMPLETED = "android.intent.action.BOOT_COMPLETED";
+
 
 	private ChainChroReminderPreference preferences;
 
@@ -34,13 +36,13 @@ public class ChainChroReminderReceiver extends BroadcastReceiver {
 	@Override
 	public void onReceive(Context context, Intent intent) {
 
-		map.put(ChainChroReminderActivity.ALERT_AP, R.string.apFullSoon);
-		map.put(ChainChroReminderActivity.ALERT_DAYBREAK,
+		map.put(ChainChroReminderUtils.ALERT_AP, R.string.apFullSoon);
+		map.put(ChainChroReminderUtils.ALERT_DAYBREAK,
 				R.string.dayBreakSoon);
-		map.put(ChainChroReminderActivity.ALERT_SOUL, R.string.soulFullSoon);
-		map.put(ChainChroReminderActivity.ALERT_HALFSOUL,
+		map.put(ChainChroReminderUtils.ALERT_SOUL, R.string.soulFullSoon);
+		map.put(ChainChroReminderUtils.ALERT_HALFSOUL,
 				R.string.halfSoulFullSoon);
-		map.put(ChainChroReminderActivity.ALERT_EXPLORER,
+		map.put(ChainChroReminderUtils.ALERT_EXPLORER,
 				R.string.explDoneSoon);
 
 
@@ -52,7 +54,43 @@ public class ChainChroReminderReceiver extends BroadcastReceiver {
 
 		try {
 
-			if (SCHEDULE_NEXT_EXPLORER == intent.getAction())
+			if (ACTION_BOOT_COMPLETED == intent.getAction())
+			{
+				long now = Calendar.getInstance().getTime().getTime() / 1000;
+				ChainChroReminderUtils utils = new ChainChroReminderUtils(context);
+
+				utils.setAlarms(preferences, now, 0);
+
+				utils.announceAutoScheduled(0);
+
+				try {
+					final android.support.v4.app.NotificationCompat.Builder mBuilder = new NotificationCompat.Builder(
+							context);
+
+					mBuilder.setContentTitle(context.getString(R.string.app_name))
+							.setContentText(context.getString(R.string.alarmsRecovered)).setAutoCancel(true);
+					mBuilder.setSmallIcon(R.drawable.ic_launcher);
+					mBuilder.setDefaults(Notification.DEFAULT_SOUND);
+
+					mBuilder.setVibrate(new long[]{0, 800, 200, 300, 100, 300});
+					mBuilder.setVisibility(VISIBILITY_PUBLIC);
+					mBuilder.setLights(0x00FFFF00, 800, 400);
+
+					final PendingIntent pendingIntent = PendingIntent.getActivity(context, 0, new Intent(Intent.ACTION_MAIN), 0);
+
+					mBuilder.setContentIntent(pendingIntent);
+
+
+					final NotificationManager notificationManager = (NotificationManager) context
+							.getSystemService(Context.NOTIFICATION_SERVICE);
+
+					notificationManager.notify(R.string.alarmsRecovered, mBuilder.build());
+				} catch (Exception e) {
+					Log.e(TAG, "Cannot Create Notification");
+					e.printStackTrace();
+				}
+
+			} else if (SCHEDULE_NEXT_EXPLORER == intent.getAction())
 			{
 				Intent launchIntent = getCCLauncher(context);
 
@@ -66,7 +104,7 @@ public class ChainChroReminderReceiver extends BroadcastReceiver {
 
                         ChainChroReminderUtils utils = new ChainChroReminderUtils(context);
 
-                        utils.createAlarm(preferences.exploringDoneTime, ChainChroReminderActivity.ALERT_EXPLORER, now);
+                        utils.createAlarm(preferences.exploringDoneTime, ChainChroReminderUtils.ALERT_EXPLORER, now);
 
                         utils.announceAutoScheduled(preferences.exploringDoneTime);
 

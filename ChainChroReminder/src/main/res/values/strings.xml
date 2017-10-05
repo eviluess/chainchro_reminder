@@ -23,6 +23,7 @@
     <string name="soulFullSoon">Soul will be full soon!</string>
     <string name="explDoneSoon">Exploring will finish soon!</string>
     <string name="explAutoScheduled">The next exploring notification has been scheduled at %1$s</string>
+    <string name="alarmsRecovered">Alarm is recovered from device boot</string>
     <string name="notSet">Not Set</string>
     
 </resources>

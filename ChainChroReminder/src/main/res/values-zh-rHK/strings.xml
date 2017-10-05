@@ -22,4 +22,5 @@
     <string name="maxAP">上限</string>
     <string name="dayBreakMinutes">1單位討伐珠恢復剩余時間</string>
     <string name="explAutoScheduled">已自動規劃下次探索結束時間%1$s</string>
+    <string name="alarmsRecovered">設備已重啓，自動設置所有提醒</string>
 </resources>
