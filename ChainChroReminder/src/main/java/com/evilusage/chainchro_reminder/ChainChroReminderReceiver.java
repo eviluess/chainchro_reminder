@@ -59,7 +59,7 @@ public class ChainChroReminderReceiver extends BroadcastReceiver {
 				long now = Calendar.getInstance().getTime().getTime() / 1000;
 				ChainChroReminderUtils utils = new ChainChroReminderUtils(context);
 
-				utils.setAlarms(preferences, now, 0);
+				utils.setAlarms(preferences, now, 7);
 
 				utils.announceAutoScheduled(0);
 
@@ -76,7 +76,8 @@ public class ChainChroReminderReceiver extends BroadcastReceiver {
 					mBuilder.setVisibility(VISIBILITY_PUBLIC);
 					mBuilder.setLights(0x00FFFF00, 800, 400);
 
-					final PendingIntent pendingIntent = PendingIntent.getActivity(context, 0, new Intent(Intent.ACTION_MAIN), 0);
+					final PendingIntent pendingIntent = PendingIntent.getActivity(context, 0,
+							new Intent(context, ChainChroReminderActivity.class), 0);
 
 					mBuilder.setContentIntent(pendingIntent);
 
